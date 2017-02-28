@@ -18,6 +18,7 @@ gem 'autoprefixer-rails'
 gem 'yaml_db'
 
 gem 'devise'
+gem 'omniauth-facebook'
 
 
 group :development, :test do
