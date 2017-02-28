@@ -15,9 +15,10 @@ gem 'bootstrap-sass'
 gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
-
+gem 'yaml_db'
 
 gem 'devise'
+gem 'omniauth-facebook'
 
 
 group :development, :test do
