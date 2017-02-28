@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   resources :cars do
-	  resources :bookings
-	end
+		end
   resources :resources do
 		end
   devise_for :users
