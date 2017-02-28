@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :cars
   resources :cars do
 		end
   resources :resources do
