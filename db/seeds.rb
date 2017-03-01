@@ -10,7 +10,7 @@ require 'open-uri'
 #   new_brand = Brand.new(new_brand_params)
 #   new_brand.save
 # end
-(61..155).to_a.each do |i|
+(121..155).to_a.each do |i|
   brand = Brand.find(i)
   make = brand.car_query_id
   url = "https://www.carqueryapi.com/api/0.3/?callback=?&cmd=getModels&make=#{make}"
