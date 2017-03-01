@@ -7,65 +7,104 @@
   <div class="row">
     <div class="col-xs-4 col-xs-offset-4 ">
       <form action="" class="navbar-wagon-search">
-        <input type="text" class="navbar-wagon-search-input" placeholder="Find your next car">
+        <input type="text" class="navbar-wagon-search-input" placeholder="Find your next car (Ex. Audi A1)">
         <button type="submit" class="navbar-wagon-search-btn">
           <i class="fa fa-search"></i>
         </button>
       </form>
     </div>
   </div>
-  <div class="row">
-    <div class="col-xs-4 col-xs-offset-4 ">
-      <a class="btn btn-primary btn-lg">Find my next car</a>
-    </div>
-  </div>
+
 
   <div class="container">
     <div class="row">
       <div class="col-xs-6">
-        <p style="color:black;"> " Type brand" </p>
+        <h3 class="title-container-text">  Bodystyle </h3>
         <div class="row">
-          <div class="col-xs-6">
-            <%= image_tag "sedan.jpeg" %>
+          <div class="col-xs-3">
+            <div style="background-image: url('<%= asset_path "car-choose.gif" %>'); height: 40px; width: 120px; background-position: 50% -41px;"></div>
+            <h3 class="home-body"> SEDAN </h3>
           </div>
-          <div class="col-xs-6">
-            <%= image_tag "SUV.jpeg" %>
+          <div class="col-xs-3">
+            <div style="background-image: url('<%= asset_path "car-choose.gif" %>'); height: 40px; width: 120px; background-position: 50% -81px;"></div>
+            <h3 class="home-body"> SUV </h3>
           </div>
+          <div class="col-xs-3">
+            <div style="background-image: url('<%= asset_path "car-choose.gif" %>'); height: 40px; width: 120px; background-position: 50% -241px">
+            </div>
+            <h3 class="home-body"> PICKUP </h3>
+          </div>
+
+          <div class="col-xs-3">
+            <div style="background-image: url('<%= asset_path "car-choose.gif" %>'); height: 40px; width: 120px; background-position: 50% -121px">
+            </div>
+            <h3 class="home-body"> MINIVAN </h3>
+          </div>
+
         </div>
 
-        <div class="row">
-          <div class="col-xs-6">
-            <%= image_tag "pickup.jpeg" %>
-          </div>
-          <div class="col-xs-6">
-            <%= image_tag "minivan.jpeg" %>
-          </div>
-        </div>
-
-        </div>
-
-      <div class="col-xs-6">
-        <p style="color:black;"> " Price Range" </p>
-        <div class="row">
-          <div class="col-xs-6">
-            <%= image_tag "price_tag.jpeg" %>
-          </div>
-          <div class="col-xs-6">
-            <%= image_tag "price_tag.jpeg" %>
-          </div>
-        </div>
 
         <div class="row">
-          <div class="col-xs-6">
-            <%= image_tag "price_tag.jpeg" %>
+          <div class="col-xs-3">
+            <div style="background-image: url('<%= asset_path "car-choose.gif" %>'); height: 40px; width: 120px; background-position: 50% -201px">
+            </div>
+            <h3 class="home-body"> HATCHBACK </h3>
           </div>
-          <div class="col-xs-6">
-            <%= image_tag "price_tag.jpeg" %>
+          <div class="col-xs-3">
+            <div style="background-image: url('<%= asset_path "car-choose.gif" %>'); height: 40px; width: 120px; background-position: 50% -281px">
+            </div>
+            <h3 class="home-body"> CONVERTIBLE </h3>
           </div>
-        </div>
+          <div class="col-xs-3">
+            <div style="background-image: url('<%= asset_path "car-choose.gif" %>'); height: 40px; width: 120px; background-position: 50% -161px">
+            </div>
+            <h3 class="home-body"> COUPE </h3>
+          </div>
+
+          <div class="col-xs-3">
+            <div style="background-image: url('<%= asset_path "car-choose.gif" %>'); height: 40px; width: 120px; background-position: 50% 0px">
+            </div>
+            <h3 class="home-body"> WAGON </h3>
+          </div>
 
         </div>
       </div>
 
-    </div>
+      <div class="col-xs-6">
+        <h3 class="title-container-text">  Price range </h3>
+        <div class="row">
+          <div class="col-xs-4">
+            <span class="price-container-text"> < €5K  </span>
+          </div>
+          <div class="col-xs-4">
+            <span class="price-container-text">  €5K-10K  </span>
+          </div>
+          <div class="col-xs-4">
+            <span class="price-container-text">  €10K-15K  </span>
+          </div>
+        </div>
 
+        <div class="row">
+          <div class="col-xs-4">
+            <span class="price-container-text">  €15K-20K  </span>
+          </div>
+          <div class="col-xs-4">
+            <span class="price-container-text">  €20K-25K  </span>
+          </div>
+          <div class="col-xs-4">
+            <span class="price-container-text"> >€25K  </span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-4 col-xs-offset-4 ">
+        <%= link_to "APPLY FILTER", cars_path, class: "btn btn-primary btn-lg" %>
+<!--         <a class="btn btn-primary btn-lg">APPLY FILTER</a>
+ -->      </div>
+    </div>
+  </div>
+
+  </div>
+</div>
