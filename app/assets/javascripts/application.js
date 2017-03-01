@@ -16,7 +16,3 @@
         document.location.href = '/cars/new?brand_name='+brand_text;
       });
     });
-
-$(document).ready(function() {
-  $('.attachinary-input').attachinary();
-});
