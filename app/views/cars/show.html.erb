@@ -12,16 +12,15 @@
   <div class="carousel-inner" role="listbox" >
 
     <div class="item active">
-      <img src="<%= asset_path 'car-fake.jpg' %>" >
+        <%= cl_image_tag @car.photos[0].path, crop: :fill %>
     </div>
 
+  <% @car.photos[1..-1].each do |photo| %>
     <div class="item" >
-      <img src="<%= asset_path 'car-fake.jpg' %>" >
+      <%= cl_image_tag photo.path, crop: :fill %>
     </div>
+  <% end %>
 
-    <div class="item" >
-      <img src="<%= asset_path 'car-fake.jpg' %>">
-    </div>
   </div>
 
   <!-- Controls -->
