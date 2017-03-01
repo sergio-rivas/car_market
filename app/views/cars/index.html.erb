@@ -1,25 +1,22 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Cars</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @cars.each do |car| %>
-      <tr>
-        <td><%= link_to 'Show', car %></td>
-        <td><%= link_to 'Edit', edit_car_path(car) %></td>
-        <td><%= link_to 'Destroy', car, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<div class="container">
+  <h1>Your search resulted in the following cars</h1>
+  <div class="row">
+  <% @cars.each do |car| %>
+    <div class="col-xs-12 col-sm-4">
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('images/CarrieLogo.png');">
+        <div class="card-category"><%= car.price %> EUR</div>
+        <div class="card-description">
+          <h2><%= car.model.brand.brand_name %></h2>
+          <p><%= car.model.name %></p>
+        </div>
+        <%= link_to "", car_path(car), {class: "card-link"} %>
+      </div>
+    </div>
     <% end %>
-  </tbody>
-</table>
+  </div>
 
-<br>
 
-<%= link_to 'New Car', new_car_path %>
+</div>
+
