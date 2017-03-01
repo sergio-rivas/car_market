@@ -23,3 +23,50 @@
 .bg-dark-blue {
   background: #3b5998;
 }
+
+
+.container-fluid{
+  padding: 0;
+  margin: 0;
+  width: 100vw;
+}
+
+.sidebar{
+    float: right;
+    top: -32px;
+    position: relative;
+    background-color: #fff;
+    color: #231f20;
+    padding: 5px 0px 5px 10px;
+    border-radius: 16px 16px 0 0;
+    font-weight: normal;
+    width: 300px;
+    z-index: 2;
+    .price{
+      margin-left:15px;
+      margin-top: -15px;
+      .currency{
+        font-size: 24px;
+        top: -15px;
+        text-transform: uppercase;
+        font-family: Plantin, AmericanTypewriter-Condensed, Times New Roman, serif;
+      }
+      .amount{
+        font-size: 64px;
+        margin-left: 5px;
+        font-family: Freight, HoeflerText-Black, Times New Roman, serif;
+        text-align: right;
+      }
+      .per{
+        font-size: 16px;
+        margin-top: 0;
+        display: inline-block;
+        margin-left: 5px;
+      }
+    }
+}
+
+.show-main{
+  widows: 620px;
+  float: left;
+}

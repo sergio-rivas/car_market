@@ -9,16 +9,14 @@
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all' %>
   </head>
-  <body style="background-image: url(<%= asset_path 'bg.png' %>);">
+  <body>
 
   <%= render 'shared/navbar' %>
   <%= render 'shared/flashes' %>
 
- 
-        <%= yield %>
-  <div class="container--fluid footer">
 
-  </div>
+        <%= yield %>
+
 
     <%= javascript_include_tag 'application' %>
   </body>
