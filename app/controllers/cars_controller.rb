@@ -13,7 +13,17 @@ class CarsController < ApplicationController
 
   # GET /cars/new
   def new
-    @car = Car.new
+    @car = Car.new()
+    if params[:brand_name]
+      @brand_selected = Brand.find_by(brand_name: params[:brand_name])
+      @models = Model.where(brand_id: @brand_selected)
+
+    else
+      @models = Model.all
+      @brand_selected = Brand.all.first
+    end
+
+
   end
 
   # GET /cars/1/edit
@@ -22,7 +32,9 @@ class CarsController < ApplicationController
 
   # POST /cars
   def create
+    car_model = Model.find(params[:car][:models][:model_id].to_i)
     @car = Car.new(car_params)
+    @car.model_id = car_model.id
     @car.user = current_user
 
     if @car.save
@@ -56,6 +68,6 @@ class CarsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def car_params
-      params.require(:car).permit(:brand_id, :model_id, :price, :color, :odometer, :year, :month, :transmission, :fuel_type, :engine_power_cc, :engine_power_hp, :description )
+      params.require(:car).permit(:brand_id, :models, :price, :color, :odometer, :year, :month, :transmission, :fuel_type, :engine_power_cc, :engine_power_hp, :description )
     end
 end
