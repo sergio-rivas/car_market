@@ -1,16 +1,12 @@
-<div class="container">
-  <div class="row">
-  <div class="col-sm-6 col-sm-offset-3">
-
       <%= simple_form_for @car do |f| %>
       <%= f.error_notification %>
       <div class="form-inputs">
         <%= f.simple_fields_for :brands do |p| %>
-          <%= p.input :brand_id ,collection: Brand.all.map{|b| b.brand_name}, selected: @brand_selected.brand_name  %>
+        <%= p.input :brand_id ,collection: Brand.all.map{|b| b.brand_name}, selected: @brand_selected.brand_name  %>
         <% end %>
         <div id="models">
           <%= f.simple_fields_for :models do |p| %>
-            <%= p.input :model_id, collection: @models %>
+          <%= p.input :model_id, collection: @models %>
           <% end %>
         </div>
         <%= f.input :price, placeholder: "Add price in EUR" %>
@@ -28,9 +24,4 @@
         <%= f.button :submit %>
       </div>
       <% end %>
-
-
-    </div>
-  </div>
-</div>
 
