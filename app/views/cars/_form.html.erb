@@ -11,7 +11,6 @@
         </div>
         <%= f.input :price, placeholder: "Add price in EUR" %>
         <%= f.input :color %>
-        <%= f.input :photos, as: :attachinary %>
         <%= f.input :odometer, placeholder: "Add the current km status" %>
         <%= f.input :year %>
         <%= f.input :month %>
@@ -20,6 +19,7 @@
         <%= f.input :engine_power_cc, placeholder: "Add cc3 of the engine" %>
         <%= f.input :engine_power_hp, placeholder: "Add horsepower" %>
         <%= f.input :description, placeholder: "Is there any additional important information about the car?" %>
+        <%= f.input :photos, as: :attachinary %>
       </div>
       <div class="form-actions">
         <%= f.button :submit, class: "btn btn-primary" %>

@@ -5,13 +5,13 @@
   <div class="row">
   <% @cars.each do |car| %>
     <div class="col-xs-12 col-sm-4">
-      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('images/CarrieLogo.png');">
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), <% if car.photos? %> url('<%= cl_image_path car.photos[0].path, height: 800, width: 600, crop: :fill %>' <% end %>);">
         <div class="card-category"><%= car.price %> EUR</div>
         <div class="card-description">
           <h2><%= car.model.brand.brand_name %></h2>
           <p><%= car.model.name %></p>
         </div>
-        <%= link_to "", car_path(car), {class: "card-link"} %>
+        <%= link_to "", car_path(car.id), {class: "card-link"} %>
       </div>
     </div>
     <% end %>
