@@ -37,13 +37,18 @@
   </div>
 <div class="container">
   <div class="show-main">
-    <div class="section">
-      <div class="col-xs-3"></div>
-      <div class="col-xs-9"></div>
+    <div class="section" style="margin-top: 50px;">
+      <div class="col-xs-3 main-title">Section</div>
+      <div class="col-xs-9 main-details">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus totam perspiciatis autem expedita, maxime eaque obcaecati natus error earum quia fugit vero, cupiditate consequatur ab non omnis dolor quidem esse.</div>
     </div>
-    <div class="section"></div>
-    <div class="section"></div>
-  </div>
+    <div class="section" style="margin-top: 50px;">
+      <div class="col-xs-3 main-title">Section</div>
+      <div class="col-xs-9 main-details">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus totam perspiciatis autem expedita, maxime eaque obcaecati natus error earum quia fugit vero, cupiditate consequatur ab non omnis dolor quidem esse.</div>
+    </div>
+    <div class="section" style="margin-top: 50px;">
+      <div class="col-xs-3 main-title">Section</div>
+      <div class="col-xs-9 main-details">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus totam perspiciatis autem expedita, maxime eaque obcaecati natus error earum quia fugit vero, cupiditate consequatur ab non omnis dolor quidem esse.</div>
+    </div>  </div>
 
 
 
@@ -53,6 +58,10 @@
       <span class="amount">30</span>
       <div class="per">per day</div>
     </div>
+    <p id="notice"><%= notice %></p>
+
+<%= link_to 'Edit', edit_car_path(@car) %> |
+<%= link_to 'Back', cars_path %>
   </div>
 
 </div>
@@ -82,7 +91,4 @@
 
 
 
-<p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_car_path(@car) %> |
-<%= link_to 'Back', cars_path %>
