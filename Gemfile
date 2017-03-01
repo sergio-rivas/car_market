@@ -19,7 +19,7 @@ gem 'yaml_db'
 
 gem 'devise'
 gem 'omniauth-facebook'
-
+gem 'geocoder'
 
 group :development, :test do
   gem 'binding_of_caller'
