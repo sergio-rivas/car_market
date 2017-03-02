@@ -1,11 +1,23 @@
 class CarsController < ApplicationController
   before_action :set_car, only: [:show, :edit, :update, :destroy]
+
   skip_before_action :authenticate_user!, only: [:index, :show]
+
 
   # GET /cars
   def index
-    @cars = Car.all
-    @brands = Brand.all
+    if params[:search_value].empty?
+      @brands = Brand.all
+      @cars = Car.all
+    else
+      search_res = params[:search_value]
+      @brands = Brand.where("brand_name LIKE ?",  "%#{search_res}%")
+      @cars = []
+      @brands.each do |brand|
+        @cars << brand.cars
+      end
+      @cars.flatten!
+    end
   end
 
   # GET /cars/1
@@ -61,7 +73,12 @@ class CarsController < ApplicationController
     redirect_to cars_url, notice: 'Car was successfully destroyed.'
   end
 
-  private
+  def search
+
+  end
+
+
+private
     # Use callbacks to share common setup or constraints between actions.
     def set_car
       @car = Car.find(params[:id])
@@ -71,4 +88,4 @@ class CarsController < ApplicationController
     def car_params
       params.require(:car).permit(:brand_id, :models, :price, :color, :odometer, :year, :month, :transmission, :fuel_type, :engine_power_cc, :engine_power_hp, :description, photos: [] )
     end
-end
+  end
