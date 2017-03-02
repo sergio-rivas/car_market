@@ -7,19 +7,14 @@ class CarsController < ApplicationController
     if params[:search_value].empty?
       @brands = Brand.all
       @cars = Car.all
-      raise
     else
       search_res = params[:search_value]
       @brands = Brand.where("brand_name LIKE ?",  "%#{search_res}%")
-      @models = []
       @cars = []
       @brands.each do |brand|
-        @models << Model.where(brand_id: brand.id)
+        @cars << brand.cars
       end
-      @models.each do |model|
-        @cars << Car.where(model_id: model.id)
-      end
-      raise
+      @cars.flatten!
     end
   end
 
