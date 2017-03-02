@@ -29,6 +29,9 @@
   padding: 0;
   margin: 0;
   width: 100vw;
+  .item img{
+    width: 100vw;
+  }
 }
 
 .sidebar{
@@ -69,7 +72,6 @@
 .show-main{
   width: 620px;
   float: left;
-  position: relative;
   .main-title{
     text-align: right;
     margin-top: 2px;

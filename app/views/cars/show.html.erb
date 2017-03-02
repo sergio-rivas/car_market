@@ -1,4 +1,3 @@
-
   <div class="container-fluid" >
     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
@@ -35,6 +34,22 @@
 </div>
   </div>
 <div class="container">
+  <div class="show-main"></div>
+
+
+  <div class="sidebar">
+    <div class="price">
+      <span class="currency">$</span>
+      <span class="amount">30</span>
+      <div class="per">per day</div>
+    </div>
+
+    <p id="notice"><%= notice %></p>
+
+
+<%= link_to 'Edit', edit_car_path(@car) %> |
+<%= link_to 'Back', cars_path %>
+  </div>
   <div class="show-main">
     <div class="section" style="margin-top: 50px;">
       <div class="col-xs-3 main-title">Section</div>
@@ -47,26 +62,12 @@
     <div class="section" style="margin-top: 50px;">
       <div class="col-xs-3 main-title">Section</div>
       <div class="col-xs-9 main-details">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus totam perspiciatis autem expedita, maxime eaque obcaecati natus error earum quia fugit vero, cupiditate consequatur ab non omnis dolor quidem esse.</div>
-    </div>  </div>
-
-
-
-  <div class="sidebar" style="height: 100vh;">
-    <div class="price">
-      <span class="currency">$</span>
-      <span class="amount">30</span>
-      <div class="per">per day</div>
     </div>
-    <p id="notice"><%= notice %></p>
-
-<%= link_to 'Edit', edit_car_path(@car) %> |
-<%= link_to 'Back', cars_path %>
+     <div style="clear:both;"></div>
   </div>
 
+
 </div>
-
-
-
 
 
 
