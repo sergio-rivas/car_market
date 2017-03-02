@@ -2,23 +2,46 @@ require 'csv'
 require 'json'
 require 'open-uri'
 
-# csv_options = { col_sep: ',', quote_char: '"', headers: :first_row }
-# filepath    = 'db/car_query_makes.csv'
 
-# CSV.foreach(filepath, csv_options) do |row|
-#   new_brand_params = {car_query_id: row['make_id'], brand_name: row['make_display']}
-#   new_brand = Brand.new(new_brand_params)
-#   new_brand.save
-# end
-(121..155).to_a.each do |i|
-  brand = Brand.find(i)
-  make = brand.car_query_id
-  url = "https://www.carqueryapi.com/api/0.3/?callback=?&cmd=getModels&make=#{make}"
-  serialized = open(url).read
-  models = JSON.parse(serialized[2..-3])["Models"]
-  models.each do |model|
-    model_params = {name: model["model_name"], brand_id: brand.id}
-    new_model = Model.new(model_params)
-    new_model.save
-  end
+# Brand & Model Seed:
+# run:  rails db:data:load
+
+#car seed: NOTE: Relies on having 3 users or more.
+
+
+50.times do
+  new_car_params = {}
+  new_car_params[:user_id] = [1, 2, 3].sample
+  new_car_params[:model_id] = rand(1..3644)
+  new_car_params[:price] = rand(3000..30000)
+  new_car_params[:color] = Faker::Color.color_name
+  new_car_params[:odometer] = "#{rand(2000..100000)} km"
+  new_car_params[:year] = rand(1990..2017)
+  new_car_params[:month] = rand(1..12)
+  new_car_params[:transmission] = ["automatic", "manual"].sample
+  new_car_params[:fuel_type] = ["gasoline", "diesel", "hybrid", "electric"].sample
+  new_car_params[:engine_power_cc] = "#{rand(2000..9000)} cc"
+  new_car_params[:engine_power_hp] = "#{new_car_params[:engine_power_cc][0..-4].to_i * rand(14..17)} hp"
+  new_car_params[:description] = "Nothing special to add."
+  new_car = Car.new(new_car_params)
+  new_car.save
+end
+
+# create BMW models for search demo
+7.times do
+  new_car_params = {}
+  new_car_params[:user_id] = [1, 2, 3].sample
+  new_car_params[:model_id] = rand(498..507)
+  new_car_params[:price] = rand(3000..30000)
+  new_car_params[:color] = Faker::Color.color_name
+  new_car_params[:odometer] = "#{rand(2000..100000)} km"
+  new_car_params[:year] = rand(1990..2017)
+  new_car_params[:month] = rand(1..12)
+  new_car_params[:transmission] = ["automatic", "manual"].sample
+  new_car_params[:fuel_type] = ["gasoline", "diesel", "hybrid", "electric"].sample
+  new_car_params[:engine_power_cc] = "#{rand(2000..9000)} cc"
+  new_car_params[:engine_power_hp] = "#{new_car_params[:engine_power_cc][0..-4].to_i * rand(14..17)} hp"
+  new_car_params[:description] = ["Great BMW w/ solid interior!", "Seats are a bit frayed. New carpets.", "There's some strange invisible stains you can only see with a black light."].sample
+  new_car = Car.new(new_car_params)
+  new_car.save
 end
