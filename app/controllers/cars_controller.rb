@@ -6,7 +6,7 @@ class CarsController < ApplicationController
 
   # GET /cars
   def index
-    if params[:search_value].empty?
+    if params[:search_value].nil?
       @brands = Brand.all
       @cars = Car.all
     else
