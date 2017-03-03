@@ -20,6 +20,7 @@ class CarsController < ApplicationController
 
   # GET /cars/1
   def show
+    @appointment = Appointment.new()
   end
 
   # GET /cars/new

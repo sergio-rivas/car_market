@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   root to: 'pages#home'
-  resources :cars
+  resources :cars do
+    resources :appointments, only: [:create]
+  end
+  resources :appointments, only: [:destroy]
   devise_for :users,
     controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   root to: 'pages#home'

@@ -45,15 +45,14 @@ require 'open-uri'
 # end
 
 # BMW IMAGES:
-Brand.find(25).cars.each do |car|
-  base = Rails.root.to_s + "/app/assets/images/BMW/"
-  photo_range = (1..20).to_a
-    p1 = photo_range.delete_at(rand(photo_range.length)).to_s + ".jpg"
-    p2 = photo_range.delete_at(rand(photo_range.length)).to_s + ".jpg"
-    p3 = photo_range.delete_at(rand(photo_range.length)).to_s + ".jpg"
-
-  car.photos = [File.open(base+p1, 'r'), File.open(base+p2, 'r'), File.open(base+p3, 'r')]
-end
+# Brand.find(25).cars.each do |car|
+#   base = Rails.root.to_s + "/app/assets/images/BMW/"
+#   photo_range = (1..20).to_a
+#     p1 = photo_range.delete_at(rand(photo_range.length)).to_s + ".jpg"
+#     p2 = photo_range.delete_at(rand(photo_range.length)).to_s + ".jpg"
+#     p3 = photo_range.delete_at(rand(photo_range.length)).to_s + ".jpg"
+#   car.photos = [File.open(base+p1, 'r'), File.open(base+p2, 'r'), File.open(base+p3, 'r')]
+# end
 
 
 
