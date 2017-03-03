@@ -1,5 +1,4 @@
 class AppointmentsController < ApplicationController
-
 before_action :set_appointment, only: [:destroy]
 
   def create

@@ -30,8 +30,8 @@
               <% end %>
             </li>
             <li>
-              <%= link_to cars_path do %>
-                <i class="fa fa-user"></i> <%= t(".profile", default: "My current ads") %>
+              <%= link_to user_path(current_user) do %>
+                <i class="fa fa-user"></i> <%= t(".profile", default: "My profile") %>
               <% end %>
             </li>
             <li>
@@ -62,7 +62,7 @@
         <li><%= link_to root_path do %>
                 <i class="fa fa-home"></i>  <%= t(".profile", default: "Home") %>
               <% end %></li>
-        <li><%= link_to cars_path do %>
+        <li><%= link_to user_path(current_user) do %>
                 <i class="fa fa-user"></i> <%= t(".profile", default: "My current ads") %>
               <% end %></li>
         <li><%= link_to destroy_user_session_path, method: :delete do %>

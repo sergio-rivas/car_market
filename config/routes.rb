@@ -3,11 +3,11 @@ Rails.application.routes.draw do
   resources :cars do
     resources :appointments, only: [:create]
   end
-  resources :appointments, only: [:destroy]
+  resources :users, only: [:show] do
+    resources :appointments, only: [:destroy]
+  end
   devise_for :users,
-    controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
-  root to: 'pages#home'
-
+    controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }, path_prefix: 'd'
   mount Attachinary::Engine => "/attachinary"
 
 
