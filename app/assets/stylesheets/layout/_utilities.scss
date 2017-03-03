@@ -31,6 +31,8 @@
   width: 100vw;
   .item img{
     width: 100vw;
+    object-fit: cover;
+    height: 80vh;
   }
 }
 
