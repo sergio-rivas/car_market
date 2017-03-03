@@ -22,6 +22,12 @@ class CarsController < ApplicationController
 
   # GET /cars/1
   def show
+    @car = Car.find(params[:id])
+
+    @hash = Gmaps4rails.build_markers(@car) do |flat, marker|
+      marker.lat flat.latitude
+      marker.lng flat.longitude
+    end
   end
 
   # GET /cars/new

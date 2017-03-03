@@ -27,6 +27,10 @@ gem 'attachinary', github: 'assembler/attachinary'
 gem 'jquery-fileupload-rails'
 gem 'coffee-rails'
 
+gem "gmaps4rails"
+
+
+
 group :development, :test do
   gem 'binding_of_caller'
   gem 'better_errors'
@@ -40,5 +44,6 @@ end
 
 source "https://rails-assets.org" do
   gem 'rails-assets-bootstrap-datepicker'
+  gem "rails-assets-underscore"
 end
 

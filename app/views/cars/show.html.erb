@@ -40,7 +40,7 @@
   <div class="sidebar">
     <div class="price">
       <span class="currency">$</span>
-      <span class="amount">30</span>
+      <span class="amount"> <%= @car.price %> </span>
       <div class="per">per day</div>
     </div>
 
@@ -51,44 +51,58 @@
 <%= link_to 'Back', cars_path %>
   </div>
   <div class="show-main">
-    <div class="section" style="margin-top: 50px;">
-      <div class="col-xs-3 main-title">Section</div>
-      <div class="col-xs-9 main-details">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus totam perspiciatis autem expedita, maxime eaque obcaecati natus error earum quia fugit vero, cupiditate consequatur ab non omnis dolor quidem esse.</div>
+      <div class="section" style="margin-top: 50px; width:100%;">
+        <div class="col-xs-3 main-title">The car</div>
+        <div class="col-xs-9 main-details">
+          <div class="row">
+            <div class="col-xs-4 list-details"> <%= @car.model.brand.brand_name %></div>
+            <div class="col-xs-4 list-details"> <%= @car.model.name %></div>
+            <div class="col-xs-4 list-details"> <%= @car.year %></div>
+          </div> <br>
+          <div class="row">
+            <div class="col-xs-4 list-details"> <%= @car.odometer %></div>
+            <div class="col-xs-4 list-details"> <%= @car.fuel_type %></div>
+            <div class="col-xs-4 list-details"> <%= @car.transmission %></div>
+          </div>
+        </div>
+      </div>
+
+    <div class="section" style="margin-top: 50px; width:100%;">
+      <div class="col-xs-3 main-title">Description</div>
+      <div class="col-xs-9 main-details"><%= @car.description %></div>
     </div>
-    <div class="section" style="margin-top: 50px;">
-      <div class="col-xs-3 main-title">Section</div>
-      <div class="col-xs-9 main-details">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus totam perspiciatis autem expedita, maxime eaque obcaecati natus error earum quia fugit vero, cupiditate consequatur ab non omnis dolor quidem esse.</div>
-    </div>
-    <div class="section" style="margin-top: 50px;">
-      <div class="col-xs-3 main-title">Section</div>
-      <div class="col-xs-9 main-details">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus totam perspiciatis autem expedita, maxime eaque obcaecati natus error earum quia fugit vero, cupiditate consequatur ab non omnis dolor quidem esse.</div>
+    <div class="section" style="margin-top: 50px; width:100%;">
+      <div class="col-xs-3 main-title">Features</div>
+      <div class="col-xs-9 main-details">
+          <div class="row">
+            <div class="col-xs-4 list-details"> <%= @car.engine_power_cc %></div>
+            <div class="col-xs-4 list-details"> <%= @car.engine_power_hp %></div>
+            <div class="col-xs-4 list-details"> <%= %></div>
+          </div>
+      </div>
     </div>
      <div style="clear:both;"></div>
   </div>
 
-
 </div>
+<%= image_tag "https://maps.googleapis.com/maps/api/staticmap?zoom=15&size=400x300&sensor=false&maptype=roadmap&markers=color:red|#{@car.address}" %>
 
+<div id="map" style="width: 100%; height: 600px;"></div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $(document).ready(function() {
+      var handler = Gmaps.build('Google');
+      handler.buildMap({ internal: { id: 'map' } }, function() {
+        markers = handler.addMarkers(<%= raw @hash.to_json %>);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+        if (markers.length == 0) {
+          handler.getMap().setZoom(2);
+        } else if (markers.length == 1) {
+          handler.getMap().setZoom(14);
+        }
+      });
+    });
+  <% end %>
+<% end %>
