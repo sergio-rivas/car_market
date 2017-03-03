@@ -1,10 +1,11 @@
-require 'csv'
-require 'json'
-require 'open-uri'
+# require 'csv'
+# require 'json'
+# require 'open-uri'
 
 
 # # Brand & Model Seed:
 # run:  rails db:data:load
+
 
 # # CAR SEED:  (NOTE: Relies on having 3 users or more.)
 # 50.times do
@@ -26,8 +27,9 @@ require 'open-uri'
 #   new_car.save
 # end
 
-# # BMW SEED:
-# 7.times do
+# BMW SEED:
+
+# 17.times do
 #   new_car_params = {}
 #   new_car_params[:user_id] = [1, 2, 3].sample
 #   new_car_params[:model_id] = rand(498..507)
