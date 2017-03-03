@@ -1,0 +1,31 @@
+<div class="col-sm-6 col-sm-offset-3">
+
+  <h2>Your profile</h2>
+  <div>
+    <p><strong>Name:</strong> <%= @user.first_name %> <%= @user.last_name
+     %></p>
+   </div>
+   <div>
+     <% avatar_url = current_user.facebook_picture_url || "https://placehold.it/30x30" %>
+     <%= image_tag avatar_url, class: 'avatar-large' %>
+   </div>
+
+   <br>
+   <h4><%= pluralize @user.appointments.size, "appointment" %></h4>
+   <% @buyer_appointments.each do |appointment| %>
+   <ul>
+    <li>
+      <p><%= appointment.appointment_date %>, <%= appointment.appointment_time.time.hour %>:00</p>
+      <ul>
+        <li><%= appointment.car.model.brand.brand_name %></li>
+        <li><%= appointment.car.model.name %></li>
+      </ul>
+    </li>
+  </ul>
+  <% end %>
+
+
+
+</div>
+
+
