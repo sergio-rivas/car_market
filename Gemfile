@@ -26,6 +26,7 @@ gem 'cloudinary', '1.1.7'
 gem 'attachinary', github: 'assembler/attachinary'
 gem 'jquery-fileupload-rails'
 gem 'coffee-rails'
+gem 'ransack'
 
 gem "gmaps4rails"
 
@@ -42,8 +43,7 @@ group :development, :test do
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
-source "https://rails-assets.org" do
-  gem 'rails-assets-bootstrap-datepicker'
-  gem "rails-assets-underscore"
-end
+
+gem 'bootstrap-datepicker-rails'
+
 
