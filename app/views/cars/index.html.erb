@@ -13,7 +13,7 @@
       </div>
 
       <div class="col-xs-12 col-sm-9" style="padding: 0px;">
-        <div class="col-xs-12" style="background-color: whitesmoke; overflow: scroll; height: 88vh; display: flex; justify-content: space-around; flex-wrap: wrap; padding: 15px;">
+        <div class="col-xs-12" style="background-color: whitesmoke; overflow: scroll; height: 88vh; display: flex; justify-content: flex-start; flex-wrap: wrap; padding: 15px">
           <div class="col-xs-12"><h4>Result: <%= pluralize @cars.size, "car" %></h4></div>
           <% @cars.each do |car| %>
             <div class="card" style="margin-right: 0.8em; width: 250px; height: 150px; border-radius: 4px; background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), <% if car.photos? %> url('<%= cl_image_path car.photos[0].path, height: 800, width: 600, crop: :fit %>' <% end %>);">
