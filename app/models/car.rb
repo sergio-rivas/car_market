@@ -5,6 +5,7 @@ class Car < ApplicationRecord
   validates :user_id, presence: true
   accepts_nested_attributes_for :model
   has_attachments :photos, maximum: 5
+
   has_many :appointments, dependent: :destroy
 
   def busy_days
@@ -14,6 +15,5 @@ class Car < ApplicationRecord
     end
     return busy
   end
-
 
 end
