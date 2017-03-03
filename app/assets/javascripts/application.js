@@ -10,7 +10,6 @@
 //= require_tree .
 
 
-
  jQuery(function(){
       jQuery('#car_brands_brand_id').change(function(){
         var brand_text = jQuery('#car_brands_brand_id').find(":selected").text();
