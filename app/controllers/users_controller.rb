@@ -8,7 +8,12 @@ class UsersController < ApplicationController
   private
 
   def set_user
-    @user = User.find(params[:id])
+    if User.find(params[:id]) == current_user
+      @user = User.find(params[:id])
+    else
+      flash[:notice] = "You have no right to access this page"
+      redirect_to ( session[:previous_url] || root_path )
+    end
   end
 
   def buyer_appointments(user)
