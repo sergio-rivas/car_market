@@ -2,6 +2,9 @@
 
 <div class="container">
   <h1>Your search resulted in the following cars</h1>
+
+  <%= render 'filter_form' %>
+
   <div class="row">
   <% @cars.each do |car| %>
     <div class="col-xs-12 col-sm-4">

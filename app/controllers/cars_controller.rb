@@ -6,17 +6,15 @@ class CarsController < ApplicationController
 
   # GET /cars
   def index
-    if params[:search_value].nil?
-      @brands = Brand.all
-      @cars = Car.all
-    else
-      search_res = params[:search_value]
-      @brands = Brand.where("brand_name LIKE ?",  "%#{search_res}%")
-      @cars = []
-      @brands.each do |brand|
-        @cars << brand.cars
+    if params[:car].nil?
+      if params[:search_value].nil?
+        @brands = Brand.all
+        @cars = Car.all
+      else
+        find_cars_of_brands( params[:search_value] )
       end
-      @cars.flatten!
+    else
+      @cars = find_cars_of_brands(params[:car][:brand]) & find_cars_of_transmission(params[:car][:transmission]) & find_cars_of_price(params[:car][:price])
     end
   end
 
@@ -79,7 +77,7 @@ class CarsController < ApplicationController
   end
 
 
-private
+  private
     # Use callbacks to share common setup or constraints between actions.
     def set_car
       @car = Car.find(params[:id])
@@ -88,5 +86,34 @@ private
     # Only allow a trusted parameter "white list" through.
     def car_params
       params.require(:car).permit(:brand_id, :models, :price, :color, :odometer, :year, :month, :transmission, :fuel_type, :engine_power_cc, :engine_power_hp, :description, photos: [] )
+    end
+
+    def find_cars_of_brands(param)
+      if param.blank?
+        @cars = Car.all
+      else
+        @brands = Brand.where("brand_name LIKE ?", "%#{param}%")
+        @cars = []
+        @brands.each do |brand|
+          @cars << brand.cars
+        end
+        @cars.flatten!
+      end
+    end
+
+    def find_cars_of_transmission(param)
+      if param.blank?
+        @cars = Car.all
+      else
+        @cars = Car.where(transmission: param)
+      end
+    end
+
+    def find_cars_of_price(param)
+      if param.blank?
+        @cars = Car.all
+      else
+        @cars = Car.where("price <= #{param}")
+      end
     end
   end

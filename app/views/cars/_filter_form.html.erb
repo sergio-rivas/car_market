@@ -1,0 +1,7 @@
+<%= simple_form_for cars_path, method: :get do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :brand, input_html: { name: 'car[brand]' } %>
+  <%= f.input :transmission, input_html: { name: 'car[transmission]' }, collection: ["automatic", "manual"] %>
+  <%= f.input :price, input_html: { name: 'car[price]' } %>
+  <%= f.button :submit, "Apply filter", class: "btn btn-primary" %>
+<% end %>
