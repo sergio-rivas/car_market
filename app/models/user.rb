@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :cars, dependent: :destroy
   has_many :appointments, dependent: :destroy
+  has_many :messages, dependent: :destroy
   devise :omniauthable, omniauth_providers: [:facebook]
 
   def self.find_for_facebook_oauth(auth)

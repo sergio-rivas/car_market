@@ -1,0 +1,32 @@
+<!-- Modal -->
+<div id="sms-form" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role='document'>
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Send SMS to seller</h4>
+      </div>
+      <div class="modal-body">
+
+
+        <form class="form-horizontal" name="smsform" method="post" action="<%= car_messages_path(@car) %>">
+          <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+
+          <div class="form-group">
+            <label class="control-label col-md-4" for="comment">Your message</label>
+            <div class="col-md-6">
+              <textarea rows="6" class="form-control" id="sms" name="content" placeholder="Write your message here. It's free to send this SMS!" minlength="30"></textarea>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-md-6">
+              <button type="submit" value="Submit" class="btn btn-primary pull-right">Send</button>
+            </div>
+          </div>
+        </form>
+
+
+      </div><!-- End of Modal body -->
+    </div><!-- End of Modal content -->
+  </div><!-- End of Modal dialog -->
+</div><!-- End of Modal -->
