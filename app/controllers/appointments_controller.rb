@@ -5,9 +5,11 @@ before_action :set_appointment, only: [:destroy]
     @date = appointment_params[:appointment_date].to_date
     @time = DateTime.new(@date.year, @date.month, @date.mday, appointment_params[:appointment_time][0..1].to_i, 0)
     @appointment = Appointment.new(appointment_params)
+    authorize @appointment
     @appointment.car_id = params[:car_id]
     @appointment.user = current_user
     @car = Car.find(params[:car_id])
+    authorize @car
 
     if @appointment.save
       redirect_to @car, notice: 'appointment was successfully created.'
@@ -27,6 +29,7 @@ private
     # Use callbacks to share common setup or constraints between actions.
     def set_appointment
       @appointment = Appointment.find(params[:id])
+      authorize @appointment
     end
 
     # Only allow a trusted parameter "white list" through.
