@@ -1,6 +1,7 @@
 # require 'csv'
 # require 'json'
 # require 'open-uri'
+require 'faker'
 
 
 # # Brand & Model Seed:
@@ -59,7 +60,14 @@
 #   car.photos = [File.open(base+p1, 'r'), File.open(base+p2, 'r'), File.open(base+p3, 'r')]
 # end
 
-
+#USER SEED:
+User.all.each do |user|
+  user.phone_number = "+34652863683" if user.phone_number.nil?
+  user.email = Faker::Internet.email if user.email.nil?
+  user.first_name = Faker::Name.first_name if user.first_name.nil?
+  user.last_name = Faker::Name.last_name if user.last_name.nil?
+  user.save!
+end
 
 
 
