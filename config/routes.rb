@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
+
   root to: 'pages#home'
   resources :cars do
     resources :appointments, only: [:create]
+    resources :messages, only: [:create]
   end
   resources :users, only: [:show] do
     resources :appointments, only: [:destroy]

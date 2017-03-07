@@ -7,6 +7,7 @@ class Car < ApplicationRecord
   has_attachments :photos, maximum: 5
 
   has_many :appointments, dependent: :destroy
+  has_many :messages, dependent: :destroy
 
   def busy_days
     busy = []
