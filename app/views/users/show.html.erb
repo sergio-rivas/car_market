@@ -1,19 +1,46 @@
+<div class="container">
+<div class="row">
 <div class="col-sm-6 col-sm-offset-3">
-
+<div class="user" style="background-color: #FFFFFF">
   <h2>Your profile</h2>
   <div>
     <p><strong>Name:</strong> <%= @user.first_name %> <%= @user.last_name
      %></p>
    </div>
-   <div>
+   <div class="row">
+   <div class ="col-xs-3">
      <% avatar_url = current_user.facebook_picture_url || "https://placehold.it/30x30" %>
      <%= image_tag avatar_url, class: 'avatar-large' %>
    </div>
-
+   <div class="col-xs-9">
+    <p><strong>e-mail <%= @user.email %></strong></p>
+   </div>
+   </div>
    <br>
-   <h4><%= pluralize @user.appointments.size, "appointment" %></h4>
-   <% @buyer_appointments.each do |appointment| %>
-   <ul>
+   <p><strong>My cars</strong></p>
+   <div class= row >
+     <div class= "col-md-12">
+       <% current_user.cars.each do |car| %>
+       <div class="row">
+        <div class="col-xs-3 list-details"> <%= car.model.brand.brand_name %></div>
+        <div class="col-xs-3 list-details"> <%= car.model.name %></div>
+        <div class="col-xs-3 list-details"> <%= car.year %></div>
+      </div> <br>
+      <div class="row">
+        <div class="col-xs-3 list-details"> <%= car.odometer %></div>
+        <div class="col-xs-3 list-details"> <%= car.fuel_type %></div>
+        <div class="col-xs-3 list-details"> <%= car.transmission %></div>
+        <div class="col-xs-1 list-details"> <%= link_to "Edit", edit_car_path(car), data: { confirm: "Are you sure?" } %></div>
+        <div class="col-xs-1 list-details"> <%= link_to "Delete", car_path(car), method: :delete, data: { } %></div>
+        <div class="col-xs-1 list-details"> <%= link_to "Show", car_path(car), data: {  } %></div>
+      </div> <br> <br>
+      <% end %>
+    </div>
+  </div>
+
+  <h4><%= pluralize @user.appointments.size, "appointment" %></h4>
+  <% @buyer_appointments.each do |appointment| %>
+  <ul>
     <li>
       <p><%= appointment.appointment_date %>, <%= appointment.appointment_time.time.hour %>:00</p>
       <ul>
@@ -25,7 +52,10 @@
   <% end %>
 
 
-
 </div>
+</div>
+</div>
+</div>
+
 
 
