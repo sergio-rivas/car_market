@@ -10,7 +10,16 @@
 
         <h2>Filters</h2>
         <% @collections = policy_scope(SearchDatum).standard_data %>
-        <%= render 'filter_form', @collections %>
+
+        <% if params[:car].nil? %>
+          <% if @search_value.nil? %>
+            <%= render 'filter_form', @collections %>
+          <% else %>
+            <%= render 'filter_form_with_search', @collections %>
+          <% end %>
+        <% else %>
+          <%= render 'filter_form_filtered', @collections %>
+        <% end %>
       </div>
 
       <div class="col-xs-12 col-sm-9" style="padding: 0px;">
