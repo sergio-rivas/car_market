@@ -20,7 +20,6 @@ class CarsController < ApplicationController
 
   # GET /cars/1
   def show
-
     @appointment = Appointment.new()
 
   end
@@ -31,7 +30,6 @@ class CarsController < ApplicationController
     if params[:brand_name]
       @brand_selected = Brand.find_by(brand_name: params[:brand_name])
       @models = Model.where(brand_id: @brand_selected)
-
     else
       @models = Model.all
       @brand_selected = Brand.all.first
@@ -42,6 +40,13 @@ class CarsController < ApplicationController
 
   # GET /cars/1/edit
   def edit
+    if params[:brand_name]
+      @brand_selected = Brand.find_by(brand_name: params[:brand_name])
+      @models = Model.where(brand_id: @brand_selected)
+    else
+      @models = Model.all
+      @brand_selected = Brand.all.first
+    end
   end
 
   # POST /cars

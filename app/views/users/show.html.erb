@@ -42,7 +42,8 @@
   <% @buyer_appointments.each do |appointment| %>
   <ul>
     <li>
-      <p><%= appointment.appointment_date %>, <%= appointment.appointment_time.time.hour %>:00</p>
+      <p><%= appointment.appointment_date %>, <%= appointment.appointment_time.time.hour %>:00 <%= link_to "Delete", user_appointment_path(user_id: current_user.id, id: appointment.id,return_to: user_path(current_user)), method: :delete, data: { } %> </p>
+
       <ul>
         <li><%= appointment.car.model.brand.brand_name %></li>
         <li><%= appointment.car.model.name %></li>
