@@ -29,13 +29,6 @@ class CarsController < ApplicationController
   def new
     @car = Car.new()
     authorize @car
-    if params[:brand_name]
-      @brand_selected = Brand.find_by(brand_name: params[:brand_name])
-      @models = policy_scope(Model).where(brand_id: @brand_selected)
-    else
-      @models = policy_scope(Model).all
-      @brand_selected = policy_scope(Brand).all.first
-    end
   end
 
   # GET /cars/1/edit
@@ -51,6 +44,7 @@ class CarsController < ApplicationController
 
   # POST /cars
   def create
+
     car_model = Model.find(params[:car][:models][:model_id].to_i)
     @car = Car.new(car_params)
     @car.model_id = car_model.id
@@ -62,6 +56,39 @@ class CarsController < ApplicationController
     else
       flash[:notice] = "Some error occured"
       render :new
+    end
+  end
+
+  # POST /cars/new
+  def create_via_vin
+
+    unless car_params[:vin].nil? || car_params[:vin] == ""
+      vin = car_params[:vin]
+      data_hash = policy_scope(Car).vin_data_parse(vin)
+      useful = policy_scope(Car).vin_data_extract(data_hash)
+
+      new_brand = Brand.find_by brand_name: data_hash["make"]["name"]
+      new_model = Model.find_by name: data_hash["model"]["name"]
+
+      @car = Car.new(useful)
+      @car.user = current_user
+      @car.model = new_model
+      authorize @car
+
+      @car.save
+
+      render :new2
+    else
+      @car = Car.new()
+      authorize @car
+      if params[:brand_name]
+        @brand_selected = Brand.find_by(brand_name: params[:brand_name])
+        @models = policy_scope(Model).where(brand_id: @brand_selected)
+      else
+        @models = policy_scope(Model).all
+        @brand_selected = policy_scope(Brand).all.first
+      end
+      render :new2
     end
   end
 
@@ -85,6 +112,7 @@ class CarsController < ApplicationController
   end
 
 
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_car
@@ -94,7 +122,7 @@ class CarsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def car_params
-      params.require(:car).permit(:brand_id, :models, :price, :color, :odometer, :year, :month, :trans_type, :fuel_type, :engine_power_cc, :engine_power_hp, :description, photos: [] )
+      params.require(:car).permit(:brand_id, :vin, :mpg_city, :mpg_highway, :size, :style, :price_suggested, :color_ext, :color_int, :trans_speeds, :trans_type, :doors, :drive, :models, :price, :odometer, :year, :fuel_type, :description, photos: [] )
     end
 
     def find_cars_of_brands(param)
@@ -133,4 +161,5 @@ class CarsController < ApplicationController
         @cars = policy_scope(Car).where("#{attribute} >= ?", param.to_i)
       end
     end
+
   end

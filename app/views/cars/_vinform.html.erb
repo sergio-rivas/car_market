@@ -1,0 +1,10 @@
+<%= simple_form_for @car, url: cars_new_path do |f| %>
+  <%= f.error_notification %>
+    <div class="form-inputs">
+      <%= f.input :vin %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit, class: "btn btn-primary", value: "Send VIN" %>
+    </div>
+<% end %>

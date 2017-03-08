@@ -16,4 +16,8 @@ class CarPolicy < ApplicationPolicy
   def destroy?
     record.user == user
   end
+
+  def create_via_vin?
+    true
+  end
 end
