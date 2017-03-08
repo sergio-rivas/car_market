@@ -1,0 +1,141 @@
+{
+  "make": {
+    "id": 200000404,
+    "name": "Chevrolet",
+    "niceName": "chevrolet"
+  },
+  "model": {
+    "id": "Chevrolet_Camaro",
+    "name": "Camaro",
+    "niceName": "camaro"
+  },
+  "transmission": {
+    "id": "200381489",
+    "name": "6A",
+    "equipmentType": "TRANSMISSION",
+    "availability": "OPTIONAL",
+    "automaticType": "Shiftable automatic",
+    "transmissionType": "AUTOMATIC",
+    "numberOfSpeeds": "6"
+  },
+  "drivenWheels": "rear wheel drive",
+  "numOfDoors": "2",
+  "options": [
+    {
+      "category": "Additional Fees",
+      "options": [
+        {
+          "id": "200381496",
+          "name": "Northeast Emissions",
+          "description": "Arizona, Connecticut, Maine, Maryland, Massachusetts, New Jersey, New York, Oregon, Pennsylvania, Rhode Island, Vermont and Washington state requirements.",
+          "equipmentType": "OPTION",
+          "availability": "All"
+        }
+      ]
+    },
+    {
+      "category": "Mechanical",
+      "options": [
+        {
+          "id": "200381487",
+          "name": "6-Speed Automatic Transmission",
+          "description": "6-Speed automatic transmission; TAPshift manual shift controls on steering wheel; Remote engine start",
+          "equipmentType": "OPTION",
+          "availability": "2LT/2SS/ZL1"
+        }
+      ]
+    },
+    {
+      "category": "Package",
+      "options": [
+        {
+          "id": "200381513",
+          "name": "RS Package",
+          "description": "20\" x 8.0\" front and 20\" x 9.0\" rear flangeless, painted aluminum wheels with Midnight Silver finish; P245/45R20 front and P275/40R20 rear summer only tires; Body-color roof ditch molding (coupe only); High intensity discharge headlamps; Body-colored shark-fin antenna (coupe only)",
+          "equipmentType": "OPTION",
+          "availability": "LT"
+        }
+      ]
+    },
+    {
+      "category": "Exterior",
+      "options": [
+        {
+          "id": "200381492",
+          "name": "Compact Spare Tire And Wheel",
+          "description": "Deletes tire sealant and inflator kit.",
+          "equipmentType": "OPTION",
+          "availability": "All Except SS"
+        }
+      ]
+    }
+  ],
+  "colors": [
+    {
+      "category": "Interior",
+      "options": [
+        {
+          "id": "200381103",
+          "name": "Black",
+          "equipmentType": "COLOR",
+          "availability": "USED"
+        }
+      ]
+    },
+    {
+      "category": "Exterior",
+      "options": [
+        {
+          "id": "200381113",
+          "name": "Silver Ice Metallic",
+          "equipmentType": "COLOR",
+          "availability": "USED"
+        }
+      ]
+    }
+  ],
+  "manufacturerCode": "1EH67",
+  "price": {
+    "baseMSRP": 34180.0,
+    "baseInvoice": 32813.0,
+    "deliveryCharges": 900.0,
+    "usedTmvRetail": 15570.0,
+    "usedPrivateParty": 13792.0,
+    "usedTradeIn": 11978.0,
+    "estimateTmv": false,
+    "tmvRecommendedRating": 0
+  },
+  "categories": {
+    "market": "Performance",
+    "EPAClass": "Compact Cars",
+    "vehicleSize": "Midsize",
+    "primaryBodyType": "Car",
+    "vehicleStyle": "Convertible",
+    "vehicleType": "Car"
+  },
+  "vin": "2G1FC3D33C9165616",
+  "squishVin": "2G1FC3D3C9",
+  "years": [
+    {
+      "id": 100531911,
+      "year": 2012,
+      "styles": [
+        {
+          "id": 101395591,
+          "name": "LT 2dr Convertible w/2LT (3.6L 6cyl 6M)",
+          "submodel": {
+            "body": "Convertible",
+            "modelName": "Camaro Convertible",
+            "niceName": "convertible"
+          },
+          "trim": "LT"
+        }
+      ]
+    }
+  ],
+  "matchingType": "SQUISHVIN",
+  "MPG": {
+    "highway": "28",
+    "city": "17"
+  }
+}
