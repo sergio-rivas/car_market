@@ -30,8 +30,8 @@
         <div class="col-xs-3 list-details"> <%= car.odometer %></div>
         <div class="col-xs-3 list-details"> <%= car.fuel_type %></div>
         <div class="col-xs-3 list-details"> <%= car.trans_type %></div>
-        <div class="col-xs-1 list-details"> <%= link_to "Edit", edit_car_path(car), data: { confirm: "Are you sure?" } %></div>
-        <div class="col-xs-1 list-details"> <%= link_to "Delete", car_path(car), method: :delete, data: { } %></div>
+        <div class="col-xs-1 list-details"> <%= link_to "Edit", edit_car_path(car), data: {  } %></div>
+        <div class="col-xs-1 list-details"> <%= link_to "Delete", car_path(car), method: :delete, data: { confirm: "Are you sure?" }  %></div>
         <div class="col-xs-1 list-details"> <%= link_to "Show", car_path(car), data: {  } %></div>
       </div> <br> <br>
       <% end %>
