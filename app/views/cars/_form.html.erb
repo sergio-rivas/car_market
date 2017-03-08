@@ -9,14 +9,18 @@
           <%= p.input :model_id, collection: @models %>
           <% end %>
         </div>
-        <%= f.input :price, placeholder: "Add price in EUR" %>
-        <%= f.input :color_int %>
-        <%= f.input :odometer, placeholder: "Add the current km status" %>
-        <%= f.input :year %>
-        <%= f.input :trans_type, collection: ["Automatic", "Manual"] %>
+        <%= f.input :drive, include_blank: true, collection: @collections[:drive], selected: @car.drive %>
+        <%= f.input :doors, include_blank: true, collection: @collections[:doors], selected: @car.doors %>
+        <%= f.input :style, include_blank: true, collection: @collections[:style], selected: @car.style %>
+        <%= f.input :size, include_blank: true, collection: @collections[:size], selected: @car.size %>
+        <%= f.input :year, input_html: {value: @car.year || 3000} %>
+        <%= f.input :mpg_city, label: "MPG (City)", input_html: {value: @car.mpg_city || ''} %>
+        <%= f.input :mpg_highway, label: "MPG (Highway)", input_html: {value: @car.mpg_highway || ''} %>
+        <%= f.input :color_int, label: "Interior Color", input_html: {value: @car.color_int || ''} %>
+        <%= f.input :color_ext, label: "Exterior Color", input_html: {value: @car.color_ext || ''} %>
+        <%= f.input :price, placeholder: "Add price in EUR", input_html: {value: @car.price_suggested || ''}%>
+        <%= f.input :odometer, placeholder: "Add the current km status (numbers only)" %>
         <%= f.input :fuel_type, collection: ["Gasoline", "Diesel", "Electric"] %>
-        <%= f.input :engine_power_cc, placeholder: "Add cc3 of the engine" %>
-        <%= f.input :engine_power_hp, placeholder: "Add horsepower" %>
         <%= f.input :description, placeholder: "Is there any additional important information about the car?" %>
         <%= f.input :photos, as: :attachinary %>
       </div>

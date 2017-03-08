@@ -11,12 +11,12 @@ class SearchDatum < ApplicationRecord
     }
 
     self.all.each do |search|
-      collections[:size] << search.metadata["categories"]["EPAClass"]
-      collections[:style] << search.metadata["categories"]["vehicleStyle"]
-      collections[:trans_speeds] << search.metadata["transmission"]["numberOfSpeeds"]
-      collections[:trans_type] << search.metadata["transmission"]["automaticType"]
-      collections[:doors] << search.metadata["numOfDoors"]
-      collections[:drive] << search.metadata["drivenWheels"]
+      collections[:size] << search.metadata["categories"]["EPAClass"] if search.metadata["categories"]["EPAClass"]
+      collections[:style] << search.metadata["categories"]["vehicleStyle"] if search.metadata["categories"]["vehicleStyle"]
+      collections[:trans_speeds] << search.metadata["transmission"]["numberOfSpeeds"] if search.metadata["transmission"]
+      collections[:trans_type] << search.metadata["transmission"]["automaticType"] if search.metadata["transmission"]
+      collections[:doors] << search.metadata["numOfDoors"] if search.metadata["numOfDoors"]
+      collections[:drive] << search.metadata["drivenWheels"] if search.metadata["drivenWheels"]
     end
 
     collections.map do |key, value|
