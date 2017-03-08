@@ -1,4 +1,4 @@
-class AppointmentsController < ApplicationController
+  class AppointmentsController < ApplicationController
 before_action :set_appointment, only: [:destroy]
 
   def create
@@ -19,8 +19,10 @@ before_action :set_appointment, only: [:destroy]
   end
 
   def destroy
+    car_id = @appointment.car_id
     @appointment.destroy
-    redirect_to appointments_url, notice: 'appointment was successfully destroyed.'
+    redirect = params[:return_to] || car_path(car_id)
+    redirect_to redirect, notice: 'appointment was successfully destroyed.'
   end
 
 

@@ -11,13 +11,15 @@
       <div class="carousel-inner" role="listbox" >
 
         <div class="item active">
-          <%= cl_image_tag @car.photos[0].path, crop: :fill %>
+          <% if @car.photos.any? %>
+            <%= cl_image_tag @car.photos[0].path, crop: :fill %>
         </div>
 
         <% @car.photos[1..-1].each do |photo| %>
         <div class="item" >
           <%= cl_image_tag photo.path, crop: :fill %>
         </div>
+        <% end %>
         <% end %>
 
       </div>
