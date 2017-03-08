@@ -9,7 +9,7 @@
 
 
         <h2>Filters</h2>
-        <% @collections = SearchDatum.standard_data %>
+        <% @collections = policy_scope(SearchDatum).standard_data %>
         <%= render 'filter_form', @collections %>
       </div>
 

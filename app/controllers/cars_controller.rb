@@ -21,6 +21,7 @@ class CarsController < ApplicationController
   # GET /cars/1
   def show
     @appointment = Appointment.new()
+    authorize @appointment
   end
 
   # GET /cars/new
@@ -29,10 +30,10 @@ class CarsController < ApplicationController
     authorize @car
     if params[:brand_name]
       @brand_selected = Brand.find_by(brand_name: params[:brand_name])
-      @models = Model.where(brand_id: @brand_selected)
+      @models = policy_scope(Model).where(brand_id: @brand_selected)
     else
-      @models = Model.all
-      @brand_selected = Brand.all.first
+      @models = policy_scope(Model).all
+      @brand_selected = policy_scope(Brand).all.first
     end
   end
 
@@ -40,10 +41,10 @@ class CarsController < ApplicationController
   def edit
     if params[:brand_name]
       @brand_selected = Brand.find_by(brand_name: params[:brand_name])
-      @models = Model.where(brand_id: @brand_selected)
+      @models = policy_scope(Model).where(brand_id: @brand_selected)
     else
-      @models = Model.all
-      @brand_selected = Brand.all.first
+      @models = policy_scope(Model).all
+      @brand_selected = policy_scope(Brand).all.first
     end
   end
 

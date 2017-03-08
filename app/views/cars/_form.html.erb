@@ -10,11 +10,10 @@
           <% end %>
         </div>
         <%= f.input :price, placeholder: "Add price in EUR" %>
-        <%= f.input :color %>
+        <%= f.input :color_int %>
         <%= f.input :odometer, placeholder: "Add the current km status" %>
         <%= f.input :year %>
-        <%= f.input :month %>
-        <%= f.input :transmission, collection: ["Automatic", "Manual"] %>
+        <%= f.input :trans_type, collection: ["Automatic", "Manual"] %>
         <%= f.input :fuel_type, collection: ["Gasoline", "Diesel", "Electric"] %>
         <%= f.input :engine_power_cc, placeholder: "Add cc3 of the engine" %>
         <%= f.input :engine_power_hp, placeholder: "Add horsepower" %>
