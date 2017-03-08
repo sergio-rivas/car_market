@@ -118,5 +118,9 @@
 # end
 
 
-
+# ADD 1st JSON to SEARCH_DATA
+file = File.read("lib/VIN_test/edmunds_VIN.json")
+data_hash = JSON.parse(file)
+new_search = SearchDatum.new(metadata: data_hash)
+new_search.save!
 
