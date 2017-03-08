@@ -46,9 +46,18 @@
       <%= render 'appointment_form', car: @car, appointment: @appointment %>
       <p id="notice"><%= notice %></p>
 
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#sms-form">
-        Send SMS
-      </button>
+      <div>
+        <h3>Contact seller</h3>
+        <div>
+          <p>Tel: <%= link_to @car.user.phone_number, "tel:#{@car.user.phone_number}" %></p>
+        </div>
+        <div>
+        <p>Email: <%= mail_to @car.user.email %></p>
+        </div>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#sms-form">
+          Send SMS
+        </button>
+      </div>
 
 
       <%= link_to 'Edit', edit_car_path(@car) %> |

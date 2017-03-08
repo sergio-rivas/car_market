@@ -27,6 +27,7 @@ gem 'attachinary', github: 'assembler/attachinary'
 gem 'jquery-fileupload-rails'
 gem 'coffee-rails'
 gem 'twilio-ruby', '~> 4.11.1'
+gem 'pundit'
 
 gem "gmaps4rails"
 

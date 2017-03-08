@@ -8,8 +8,8 @@ class CarsController < ApplicationController
   def index
     if params[:car].nil?
       if params[:search_value].nil?
-        @brands = Brand.all
-        @cars = Car.all
+        @brands = policy_scope(Brand).all
+        @cars = policy_scope(Car).all
       else
         find_cars_of_brands( params[:search_value] )
       end
@@ -20,24 +20,20 @@ class CarsController < ApplicationController
 
   # GET /cars/1
   def show
-
     @appointment = Appointment.new()
-
   end
 
   # GET /cars/new
   def new
     @car = Car.new()
+    authorize @car
     if params[:brand_name]
       @brand_selected = Brand.find_by(brand_name: params[:brand_name])
       @models = Model.where(brand_id: @brand_selected)
-
     else
       @models = Model.all
       @brand_selected = Brand.all.first
     end
-
-
   end
 
   # GET /cars/1/edit
@@ -50,6 +46,7 @@ class CarsController < ApplicationController
     @car = Car.new(car_params)
     @car.model_id = car_model.id
     @car.user = current_user
+    authorize @car
 
     if @car.save
       redirect_to @car, notice: 'Car was successfully created.'
@@ -83,6 +80,7 @@ class CarsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_car
       @car = Car.find(params[:id])
+      authorize @car
     end
 
     # Only allow a trusted parameter "white list" through.
@@ -92,9 +90,9 @@ class CarsController < ApplicationController
 
     def find_cars_of_brands(param)
       if param.blank?
-        @cars = Car.all
+        @cars = policy_scope(Car).all
       else
-        @brands = Brand.where("brand_name LIKE ?", "%#{param}%")
+        @brands = policy_scope(Brand).where("brand_name LIKE ?", "%#{param}%")
         @cars = []
         @brands.each do |brand|
           @cars << brand.cars
@@ -105,17 +103,17 @@ class CarsController < ApplicationController
 
     def find_cars_of_transmission(param)
       if param.blank?
-        @cars = Car.all
+        @cars = policy_scope(Car).all
       else
-        @cars = Car.where(transmission: param)
+        @cars = policy_scope(Car).where(transmission: param)
       end
     end
 
     def find_cars_of_price(param)
       if param.blank?
-        @cars = Car.all
+        @cars = policy_scope(Car).all
       else
-        @cars = Car.where("price <= #{param}")
+        @cars = policy_scope(Car).where("price <= #{param}")
       end
     end
   end
