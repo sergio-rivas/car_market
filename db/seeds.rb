@@ -15,13 +15,14 @@
 #   new_car_params[:model_id] = rand(1..3644)
 #   new_car_params[:price] = rand(3000..30000)
 # #  new_car_params[:color] = Faker::Color.color_name  //DEPRECATED
-#   new_car_params[:odometer] = "#{rand(2000..100000)} km"
+#   new_car_params[:odometer] = rand(2000..100000)
 #   new_car_params[:year] = rand(1990..2017)
 # #  new_car_params[:month] = rand(1..12) //DEPRECATED
-#   new_car_params[:transmission] = ["automatic", "manual"].sample
+#   new_car_params[:trans_type] = ["Automatic", "Manual"].sample
+#   new_car_params[:trans_speeds] = ["4", "5", "6", "7"].sample
 #   new_car_params[:fuel_type] = ["gasoline", "diesel", "hybrid", "electric"].sample
-#   new_car_params[:engine_power_cc] = "#{rand(2000..9000)} cc"
-#   new_car_params[:engine_power_hp] = "#{new_car_params[:engine_power_cc][0..-4].to_i * rand(14..17)} hp"
+#   # new_car_params[:engine_power_cc] = "#{rand(2000..9000)} cc"
+#   # new_car_params[:engine_power_hp] = "#{new_car_params[:engine_power_cc][0..-4].to_i * rand(14..17)} hp"
 #   new_car_params[:description] = "Nothing special to add."
 #   # new_car_params[:address] = Faker::Address.street_address
 #   new_car = Car.new(new_car_params)
@@ -35,14 +36,16 @@
 #   new_car_params[:user_id] = [1, 2, 3].sample
 #   new_car_params[:model_id] = rand(498..507)
 #   new_car_params[:price] = rand(3000..30000)
-#   new_car_params[:color] = Faker::Color.color_name
-#   new_car_params[:odometer] = "#{rand(2000..100000)} km"
+#   # new_car_params[:color] = Faker::Color.color_name
+#   new_car_params[:odometer] = rand(2000..100000)
 #   new_car_params[:year] = rand(1990..2017)
-#   new_car_params[:month] = rand(1..12)
-#   new_car_params[:transmission] = ["automatic", "manual"].sample
+#   new_car_params[:trans_type] = ["Automatic", "Manual"].sample
+#   new_car_params[:trans_speeds] = ["4", "5", "6", "7"].sample
+#   # new_car_params[:month] = rand(1..12)
+#   # new_car_params[:transmission] = ["automatic", "manual"].sample
 #   new_car_params[:fuel_type] = ["gasoline", "diesel", "hybrid", "electric"].sample
-#   new_car_params[:engine_power_cc] = "#{rand(2000..9000)} cc"
-#   new_car_params[:engine_power_hp] = "#{new_car_params[:engine_power_cc][0..-4].to_i * rand(14..17)} hp"
+#   # new_car_params[:engine_power_cc] = "#{rand(2000..9000)} cc"
+#   # new_car_params[:engine_power_hp] = "#{new_car_params[:engine_power_cc][0..-4].to_i * rand(14..17)} hp"
 #   new_car_params[:description] = ["Great BMW w/ solid interior!", "Seats are a bit frayed. New carpets.", "There's some strange invisible stains you can only see with a black light."].sample
 #   # new_car_params[:address] = Faker::Address.street_address
 #   new_car = Car.new(new_car_params)
@@ -111,7 +114,6 @@
 #   car.price_suggested = "13,000" if car.price_suggested.nil?
 #   car.color_ext = Faker::Color.color_name
 #   car.color_int = ["Brown", "Black", "Grey"].sample if car.color_int.nil?
-#   car.transmission = ["Automatic", "Manual"].sample if car.transmission.nil?
 #   car.doors = ["2", "4"].sample if car.doors.nil?
 #   car.drive = ["front wheel drive", "rear wheel drive", "four weel drive"].sample if car.drive.nil?
 #   car.save
@@ -119,8 +121,8 @@
 
 
 # ADD 1st JSON to SEARCH_DATA
-file = File.read("lib/VIN_test/edmunds_VIN.json")
-data_hash = JSON.parse(file)
-new_search = SearchDatum.new(metadata: data_hash)
-new_search.save!
+# file = File.read("lib/VIN_test/edmunds_VIN.json")
+# data_hash = JSON.parse(file)
+# new_search = SearchDatum.new(metadata: data_hash)
+# new_search.save!
 

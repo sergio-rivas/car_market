@@ -1,7 +1,15 @@
 <%= simple_form_for cars_path, method: :get do |f| %>
   <%= f.error_notification %>
   <%= f.input :brand, input_html: { name: 'car[brand]' } %>
-  <%= f.input :transmission, input_html: { name: 'car[transmission]' }, collection: ["automatic", "manual"] %>
   <%= f.input :price, input_html: { name: 'car[price]' } %>
+  <%= f.input :odometer, input_html: { name: 'car[odometer]' } %>
+  <%= f.input :year, input_html: { name: 'car[year]' } %>
+  <%= f.input :trans_type, input_html: { name: 'car[trans_type]' }, collection: @collections[:trans_type] %>
+  <%= f.input :trans_speeds, input_html: { name: 'car[trans_speeds]' }, collection: @collections[:trans_speeds] %>
+  <%= f.input :size, input_html: { name: 'car[size]' }, collection: @collections[:size] %>
+  <%= f.input :style, input_html: { name: 'car[style]' }, collection: @collections[:style] %>
+  <%= f.input :doors, input_html: { name: 'car[doors]' }, collection: @collections[:doors] %>
+  <%= f.input :drive, input_html: { name: 'car[drive]' }, collection: @collections[:drive] %>
+
   <%= f.button :submit, "Apply filter", class: "btn btn-primary" %>
 <% end %>

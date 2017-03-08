@@ -5,11 +5,12 @@
 
 
     <div class="row">
-      <div class="col-xs-12 col-sm-3" style="background-color: white; margin-top: 0; padding: 30px 20px 10px 10px;">
+      <div class="col-xs-12 col-sm-3" style="background-color: white; overflow: scroll; height: 88vh; margin-top: 0; padding: 30px 20px 10px 10px;">
 
 
         <h2>Filters</h2>
-        <%= render 'filter_form' %>
+        <% @collections = SearchDatum.standard_data %>
+        <%= render 'filter_form', @collections %>
       </div>
 
       <div class="col-xs-12 col-sm-9" style="padding: 0px;">
