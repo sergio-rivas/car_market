@@ -90,9 +90,14 @@
         <div class="col-xs-3 main-title">Features</div>
         <div class="col-xs-9 main-details">
           <div class="row">
-            <div class="col-xs-4 list-details"> <%= @car.engine_power_cc %></div>
-            <div class="col-xs-4 list-details"> <%= @car.engine_power_hp %></div>
-            <div class="col-xs-4 list-details"> <%= %></div>
+            <div class="col-xs-4 list-details"> <%= @car.style %></div>
+            <div class="col-xs-4 list-details"> <%= @car.size %></div>
+            <div class="col-xs-4 list-details"> doors:<%= @car.doors%></div>
+          </div>
+          <div class="row">
+            <div class="col-xs-4 list-details"> <%= @car.drive %></div>
+            <div class="col-xs-4 list-details"> <%= @car.trans_speeds %></div>
+            <div class="col-xs-4 list-details"> <%= @car.color_ext%></div>
           </div>
         </div>
       </div>
@@ -121,3 +126,13 @@
     });
   </script>
   <% end %>
+
+
+
+
+    t.string   "vin"
+
+
+    t.string   "color_int"
+    t.string   "drive"
+    t.string   "trans_speeds" -->

@@ -104,7 +104,7 @@
 
 
 
-# # UPDATE PREVIOUS FAKED CARS TO FULL DATASET
+# UPDATE PREVIOUS FAKED CARS TO FULL DATASET
 # Car.all.each do |car|
 #   car.mpg_city = rand(12..20).to_s if car.mpg_city.nil?
 #   car.mpg_highway = rand(25..36).to_s if car.mpg_highway.nil?
@@ -120,7 +120,7 @@
 # end
 
 
-# ADD 1st JSON to SEARCH_DATA
+# # ADD 1st JSON to SEARCH_DATA
 # file = File.read("lib/VIN_test/edmunds_VIN.json")
 # data_hash = JSON.parse(file)
 # new_search = SearchDatum.new(metadata: data_hash)
