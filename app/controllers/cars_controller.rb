@@ -42,6 +42,7 @@ class CarsController < ApplicationController
 
   # POST /cars
   def create
+
     car_model = Model.find(params[:car][:models][:model_id].to_i)
     @car = Car.new(car_params)
     @car.model_id = car_model.id
@@ -74,6 +75,7 @@ class CarsController < ApplicationController
   def search
 
   end
+
 
 
   private
@@ -116,4 +118,5 @@ class CarsController < ApplicationController
         @cars = policy_scope(Car).where("price <= #{param}")
       end
     end
+
   end
