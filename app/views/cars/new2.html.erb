@@ -1,5 +1,18 @@
+<div class="wrapper" style="overflow:auto;">
+<div class="container" style="width: 100%">
+<p id="notice" style="margin: 0px;"><%= notice %></p>
+
+  <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
-      <h2>Add a new car</h2>
-      <%= render 'form' %>
+      <h2>Add car: Step 2/2 - Car Details</h2>
+
+      <% if @car.vin.blank? %>
+        <%= render 'form' %>
+        <% else %>
+        <%= render 'form_vin' %>
+        <% end %>
       <%= link_to 'Exit', cars_path %>
     </div>
+</div>
+</div>
+</div>

@@ -28,13 +28,6 @@ class CarsController < ApplicationController
   def new
     @car = Car.new()
     authorize @car
-    if params[:brand_name]
-      @brand_selected = Brand.find_by(brand_name: params[:brand_name])
-      @models = policy_scope(Model).where(brand_id: @brand_selected)
-    else
-      @models = policy_scope(Model).all
-      @brand_selected = policy_scope(Brand).all.first
-    end
   end
 
   # GET /cars/1/edit
@@ -68,7 +61,8 @@ class CarsController < ApplicationController
   # POST /cars/new
   def create_via_vin
 
-    unless params[:vin].nil? || params[:vin] == ""
+    unless car_params[:vin].nil? || car_params[:vin] == ""
+      vin = car_params[:vin]
       data_hash = policy_scope(Car).vin_data_parse(vin)
       useful = policy_scope(Car).vin_data_extract(data_hash)
 
@@ -80,13 +74,21 @@ class CarsController < ApplicationController
       @car.model = new_model
       authorize @car
 
-      if @car.save
-        redirect_to #########, notice: 'Basic Specs Retrieved'
+      @car.save
 
+      render :new2
     else
+      @car = Car.new()
+      authorize @car
+      if params[:brand_name]
+        @brand_selected = Brand.find_by(brand_name: params[:brand_name])
+        @models = policy_scope(Model).where(brand_id: @brand_selected)
+      else
+        @models = policy_scope(Model).all
+        @brand_selected = policy_scope(Brand).all.first
+      end
       render :new2
     end
-
   end
 
   # PATCH/PUT /cars/1
@@ -119,7 +121,7 @@ class CarsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def car_params
-      params.require(:car).permit(:brand_id, :models, :price, :color, :odometer, :year, :month, :transmission, :fuel_type, :engine_power_cc, :engine_power_hp, :description, photos: [] )
+      params.require(:car).permit(:brand_id, :vin, :mpg_city, :mpg_highway, :size, :style, :price_suggested, :color_ext, :color_int, :trans_speeds, :trans_type, :doors, :drive, :models, :price, :odometer, :year, :fuel_type, :description, photos: [] )
     end
 
     def find_cars_of_brands(param)

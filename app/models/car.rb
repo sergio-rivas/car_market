@@ -38,10 +38,16 @@ class Car < ApplicationRecord
     useful[:size] = data_hash["categories"]["EPAClass"]
     useful[:style] = data_hash["categories"]["vehicleStyle"]
     useful[:price_suggested] = data_hash["price"]["usedPrivateParty"]
-    useful[:color_ext] = data_hash["colors"][1]["options"][0]["name"]
-    useful[:color_int] = data_hash["colors"][0]["options"][0]["name"]
-    useful[:trans_speeds] = data_hash["transmission"]["numberOfSpeeds"]
-    useful[:trans_type] = data_hash["transmission"]["automaticType"]
+    if data_hash["colors"]
+      data_hash["colors"].each do |data|
+        useful[:color_ext] = data["options"][0]["name"] if data["category"] == "Exterior"
+        useful[:color_int] = data["options"][0]["name"] if data["category"] == "Interior"
+      end
+    end
+    if data_hash["transmission"]
+      useful[:trans_speeds] = data_hash["transmission"]["numberOfSpeeds"]
+      useful[:trans_type] = data_hash["transmission"]["automaticType"]
+    end
     useful[:doors] = data_hash["numOfDoors"]
     useful[:drive] = data_hash["drivenWheels"]
     return useful

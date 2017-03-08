@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }, path_prefix: 'd'
   mount Attachinary::Engine => "/attachinary"
 
-  GET '/cars/new/2' => 'cars#new2', :as => :new_cars_2
-  POST '/cars/new' => 'cars#create_via_vin'
+  get '/cars/new/2' => 'cars#new2', :as => :new_cars_2
+  post '/cars/new' => 'cars#create_via_vin'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
