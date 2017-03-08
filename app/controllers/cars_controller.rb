@@ -104,7 +104,7 @@ class CarsController < ApplicationController
   # DELETE /cars/1
   def destroy
     @car.destroy
-    redirect_to cars_url, notice: 'Car was successfully destroyed.'
+    redirect_to user_path(current_user), notice: 'Car was successfully destroyed.'
   end
 
   def search

@@ -60,10 +60,6 @@
           Send SMS
         </button>
       </div>
-
-
-      <%= link_to 'Edit', edit_car_path(@car) %> |
-      <%= link_to 'Back', cars_path %>
     </div>
     <div class="show-main">
       <div class="section" style="margin-top: 50px; width:100%;">
@@ -107,9 +103,6 @@
   </div>
   <%= render 'sms-modal' %>
 
-
-  <%= image_tag "maps.png", style: "width:100vw;" %>
-
   <% content_for :after_js do %>
   <script type="text/javascript">
     $(document).ready(function(){
@@ -129,10 +122,3 @@
 
 
 
-
-    t.string   "vin"
-
-
-    t.string   "color_int"
-    t.string   "drive"
-    t.string   "trans_speeds" -->
