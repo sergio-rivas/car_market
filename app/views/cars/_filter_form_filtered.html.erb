@@ -1,0 +1,15 @@
+<%= simple_form_for cars_path, method: :get do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :brand, input_html: { name: 'car[brand]', value: params[:car][:brand] }, required: false %>
+  <%= f.input :price, input_html: { name: 'car[price]', value: params[:car][:price] }, required: false, placeholder: 'Add maxixmum limit in EUR' %>
+  <%= f.input :odometer, input_html: { name: 'car[odometer]', value: params[:car][:odometer] }, required: false, placeholder: "Add maximum limit in km"  %>
+  <%= f.input :year, input_html: { name: 'car[year]', value: params[:car][:year]  }, required: false, placeholder: "Add minimum limit in year"  %>
+  <%= f.input :trans_type, label: "Transmission type", input_html: { name: 'car[trans_type]' }, include_blank: true, collection: @collections[:trans_type], selected: params[:car][:trans_type], required: false  %>
+  <%= f.input :trans_speeds, label: "Transmission speed", input_html: { name: 'car[trans_speeds]' }, include_blank: true, collection: @collections[:trans_speeds], selected: params[:car][:trans_speeds], required: false  %>
+  <%= f.input :size, input_html: { name: 'car[size]' }, include_blank: true, collection: @collections[:size], selected: params[:car][:size], required: false  %>
+  <%= f.input :style, input_html: { name: 'car[style]' }, include_blank: true, collection: @collections[:style], selected: params[:car][:style], required: false  %>
+  <%= f.input :doors, input_html: { name: 'car[doors]' }, include_blank: true, collection: @collections[:doors], selected: params[:car][:doors], required: false  %>
+  <%= f.input :drive, input_html: { name: 'car[drive]' }, include_blank: true, collection: @collections[:drive], selected: params[:car][:drive], required: false  %>
+
+  <%= f.button :submit, "Apply filter", class: "btn btn-primary" %>
+<% end %>

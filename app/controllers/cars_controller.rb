@@ -11,17 +11,18 @@ class CarsController < ApplicationController
         @brands = policy_scope(Brand).all
         @cars = policy_scope(Car).all
       else
-        find_cars_of_brands( params[:search_value] )
+        @search_value = params[:search_value]
+        find_cars_of_brands(@search_value)
       end
     else
-      @cars = find_cars_of_brands(params[:car][:brand]) & find_cars_of_attribute("trans_type", params[:car][:trans_type]) & find_cars_below_attribute("price", params[:car][:price]) & find_cars_below_attribute("odometer", params[:car][:odometer]) & find_cars_below_attribute("year", params[:car][:year]) & find_cars_of_attribute("size", params[:car][:size]) & find_cars_of_attribute("style", params[:car][:style]) & find_cars_of_attribute("drive", params[:car][:drive]) & find_cars_of_attribute("doors", params[:car][:doors])
+      @cars = find_cars_of_brands(params[:car][:brand]) & find_cars_of_attribute("trans_type", params[:car][:trans_type]) & find_cars_below_attribute("price", params[:car][:price]) & find_cars_below_attribute("odometer", params[:car][:odometer]) & find_cars_above_attribute("year", params[:car][:year]) & find_cars_of_attribute("size", params[:car][:size]) & find_cars_of_attribute("style", params[:car][:style]) & find_cars_of_attribute("drive", params[:car][:drive]) & find_cars_of_attribute("doors", params[:car][:doors])
+
     end
   end
 
   # GET /cars/1
   def show
     @appointment = Appointment.new()
-    authorize @appointment
   end
 
   # GET /cars/new
@@ -153,5 +154,12 @@ class CarsController < ApplicationController
       end
     end
 
+    def find_cars_above_attribute(attribute, param)
+      if param.blank?
+        @cars = policy_scope(Car).all
+      else
+        @cars = policy_scope(Car).where("#{attribute} >= ?", param.to_i)
+      end
+    end
 
   end

@@ -1,6 +1,6 @@
 <%= simple_form_for cars_path, method: :get do |f| %>
   <%= f.error_notification %>
-  <%= f.input :brand, input_html: { name: 'car[brand]' }, required: false %>
+  <%= f.input :brand, input_html: { name: 'car[brand]', value: params[:search_value] }, required: false %>
   <%= f.input :price, input_html: { name: 'car[price]' }, required: false, placeholder: 'Add maxixmum limit in EUR' %>
   <%= f.input :odometer, input_html: { name: 'car[odometer]' }, required: false, placeholder: "Add maximum limit in km"  %>
   <%= f.input :year, input_html: { name: 'car[year]' }, required: false, placeholder: "Add minimum limit in year"  %>
