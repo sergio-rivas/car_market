@@ -14,7 +14,7 @@ class CarsController < ApplicationController
         find_cars_of_brands( params[:search_value] )
       end
     else
-      @cars = find_cars_of_brands(params[:car][:brand]) & find_cars_of_transmission(params[:car][:transmission]) & find_cars_of_price(params[:car][:price])
+      @cars = find_cars_of_brands(params[:car][:brand]) & find_cars_of_attribute("trans_type", params[:car][:trans_type]) & find_cars_below_attribute("price", params[:car][:price]) & find_cars_below_attribute("odometer", params[:car][:odometer]) & find_cars_below_attribute("year", params[:car][:year]) & find_cars_of_attribute("size", params[:car][:size]) & find_cars_of_attribute("style", params[:car][:style]) & find_cars_of_attribute("drive", params[:car][:drive]) & find_cars_of_attribute("doors", params[:car][:doors])
     end
   end
 
@@ -103,19 +103,19 @@ class CarsController < ApplicationController
       end
     end
 
-    def find_cars_of_transmission(param)
+    def find_cars_of_attribute(attribute, param)
       if param.blank?
         @cars = policy_scope(Car).all
       else
-        @cars = policy_scope(Car).where(transmission: param)
+        @cars = policy_scope(Car).where(attribute.to_sym => param)
       end
     end
 
-    def find_cars_of_price(param)
+    def find_cars_below_attribute(attribute, param)
       if param.blank?
         @cars = policy_scope(Car).all
       else
-        @cars = policy_scope(Car).where("price <= #{param}")
+        @cars = policy_scope(Car).where("#{attribute} <= ?", param.to_i)
       end
     end
 
