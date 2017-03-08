@@ -1,0 +1,28 @@
+      <%= simple_form_for @car do |f| %>
+      <%= f.error_notification %>
+      <div class="form-inputs">
+        <%= f.simple_fields_for :brands do |p| %>
+        <%= p.input :brand_id ,collection: Brand.all.map{|b| b.brand_name}, selected: @brand_selected.brand_name  %>
+        <% end %>
+        <div id="models">
+          <%= f.simple_fields_for :models do |p| %>
+          <%= p.input :model_id, collection: @models %>
+          <% end %>
+        </div>
+        <%= f.input :price, placeholder: "Add price in EUR" %>
+        <%= f.input :color %>
+        <%= f.input :odometer, placeholder: "Add the current km status" %>
+        <%= f.input :year %>
+        <%= f.input :month %>
+        <%= f.input :transmission, collection: ["Automatic", "Manual"] %>
+        <%= f.input :fuel_type, collection: ["Gasoline", "Diesel", "Electric"] %>
+        <%= f.input :engine_power_cc, placeholder: "Add cc3 of the engine" %>
+        <%= f.input :engine_power_hp, placeholder: "Add horsepower" %>
+        <%= f.input :description, placeholder: "Is there any additional important information about the car?" %>
+        <%= f.input :photos, as: :attachinary %>
+      </div>
+      <div class="form-actions">
+        <%= f.button :submit, class: "btn btn-primary" %>
+      </div>
+      <% end %>
+

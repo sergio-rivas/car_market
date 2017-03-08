@@ -57,6 +57,30 @@ class CarsController < ApplicationController
     end
   end
 
+  # POST /cars/new
+  def create_via_vin
+
+    unless params[:vin].nil? || params[:vin] == ""
+      data_hash = policy_scope(Car).vin_data_parse(vin)
+      useful = policy_scope(Car).vin_data_extract(data_hash)
+
+      new_brand = Brand.find_by brand_name: data_hash["make"]["name"]
+      new_model = Model.find_by name: data_hash["model"]["name"]
+
+      @car = Car.new(useful)
+      @car.user = current_user
+      @car.model = new_model
+      authorize @car
+
+      if @car.save
+        redirect_to #########, notice: 'Basic Specs Retrieved'
+
+    else
+      render :new2
+    end
+
+  end
+
   # PATCH/PUT /cars/1
   def update
     if @car.update(car_params)
@@ -118,5 +142,6 @@ class CarsController < ApplicationController
         @cars = policy_scope(Car).where("#{attribute} <= ?", param.to_i)
       end
     end
+
 
   end
