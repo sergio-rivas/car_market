@@ -1,0 +1,2 @@
+class SearchDatum < ApplicationRecord
+end
