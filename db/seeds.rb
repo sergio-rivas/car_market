@@ -61,13 +61,13 @@
 # end
 
 #USER SEED:
-# User.all.each do |user|
-#   user.phone_number = "+34652863683" if user.phone_number.nil?
-#   user.email = Faker::Internet.email if user.email.nil?
-#   user.first_name = Faker::Name.first_name if user.first_name.nil?
-#   user.last_name = Faker::Name.last_name if user.last_name.nil?
-#   user.save!
-# end
+User.all.each do |user|
+  user.phone_number = "+34652863683" if user.phone_number.nil?
+  user.email = Faker::Internet.email if user.email.nil?
+  user.first_name = Faker::Name.first_name if user.first_name.nil?
+  user.last_name = Faker::Name.last_name if user.last_name.nil?
+  user.save!
+end
 
 
 # DEMO_VIN_API--EDMUNDS:
@@ -116,27 +116,27 @@
 #   car.save
 # end
 
-# ADD 1st JSON to SEARCH_DATA
-file = File.read("lib/VIN_test/edmunds_VIN.json")
-data_hash = JSON.parse(file)
-new_search = SearchDatum.new(metadata: data_hash)
-new_search.save!
+# # ADD 1st JSON to SEARCH_DATA
+# file = File.read("lib/VIN_test/edmunds_VIN.json")
+# data_hash = JSON.parse(file)
+# new_search = SearchDatum.new(metadata: data_hash)
+# new_search.save!
 
-# HEROKU FINAL SEED
+# # HEROKU FINAL SEED
 
-Car.all.each do |car|
-  car.mpg_city = rand(12..20).to_s if car.mpg_city.nil?
-  car.mpg_highway = rand(25..36).to_s if car.mpg_highway.nil?
-  car.year = rand(1990..2017).to_s if car.year.nil?
-  car.size = ["Compact Cars", "Midsize Cars", "Fullsize Cars", "XL Cars"].sample if car.size.nil?
-  car.style = ["Sedan", "SUV", "Pickup", "Minivan", "Hatchback", "Convertible", "Coupe", "Wagon"].sample if car.style.nil?
-  car.price_suggested = "13,000" if car.price_suggested.nil?
-  car.color_ext = Faker::Color.color_name
-  car.color_int = ["Brown", "Black", "Grey"].sample if car.color_int.nil?
-  car.doors = ["2", "4"].sample if car.doors.nil?
-  car.drive = ["front wheel drive", "rear wheel drive", "four weel drive"].sample if car.drive.nil?
-  car.trans_type = ["Automatic", "Manual", "Shiftable automatic"].sample if car.trans_type.nil?
-  car.trans_speeds = ["5", "6"].sample if car.trans_speeds.nil?
-  car.save
-end
+# Car.all.each do |car|
+#   car.mpg_city = rand(12..20).to_s if car.mpg_city.nil?
+#   car.mpg_highway = rand(25..36).to_s if car.mpg_highway.nil?
+#   car.year = rand(1990..2017).to_s if car.year.nil?
+#   car.size = ["Compact Cars", "Midsize Cars", "Fullsize Cars", "XL Cars"].sample if car.size.nil?
+#   car.style = ["Sedan", "SUV", "Pickup", "Minivan", "Hatchback", "Convertible", "Coupe", "Wagon"].sample if car.style.nil?
+#   car.price_suggested = "13,000" if car.price_suggested.nil?
+#   car.color_ext = Faker::Color.color_name
+#   car.color_int = ["Brown", "Black", "Grey"].sample if car.color_int.nil?
+#   car.doors = ["2", "4"].sample if car.doors.nil?
+#   car.drive = ["front wheel drive", "rear wheel drive", "four weel drive"].sample if car.drive.nil?
+#   car.trans_type = ["Automatic", "Manual", "Shiftable automatic"].sample if car.trans_type.nil?
+#   car.trans_speeds = ["5", "6"].sample if car.trans_speeds.nil?
+#   car.save
+# end
 
