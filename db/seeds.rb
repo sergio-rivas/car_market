@@ -61,13 +61,13 @@
 # end
 
 #USER SEED:
-User.all.each do |user|
-  user.phone_number = "+34652863683" if user.phone_number.nil?
-  user.email = Faker::Internet.email if user.email.nil?
-  user.first_name = Faker::Name.first_name if user.first_name.nil?
-  user.last_name = Faker::Name.last_name if user.last_name.nil?
-  user.save!
-end
+# User.all.each do |user|
+#   user.phone_number = "+34652863683" if user.phone_number.nil?
+#   user.email = Faker::Internet.email if user.email.nil?
+#   user.first_name = Faker::Name.first_name if user.first_name.nil?
+#   user.last_name = Faker::Name.last_name if user.last_name.nil?
+#   user.save!
+# end
 
 
 # DEMO_VIN_API--EDMUNDS:
