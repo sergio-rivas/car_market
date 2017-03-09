@@ -5,8 +5,8 @@ class CarPolicy < ApplicationPolicy
     end
   end
 
-  def new2?
-    true
+  def vin?
+    create?
   end
 
   def create?
@@ -21,7 +21,7 @@ class CarPolicy < ApplicationPolicy
     record.user == user
   end
 
-  def create_via_vin?
+  def create_from_vin?
     true
   end
 end

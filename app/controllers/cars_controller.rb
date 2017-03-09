@@ -27,7 +27,16 @@ class CarsController < ApplicationController
 
   # GET /cars/new
   def new
-    @car = Car.new()
+    @collections = policy_scope(SearchDatum).standard_data
+    @brand_selected = Brand.find_by(brand_name: params[:brand_name])
+
+    if @brand_selected
+      @models = policy_scope(Model).where(brand_id: @brand_selected)
+    else
+      @models = policy_scope(Model).all
+    end
+
+    @car = Car.new
     authorize @car
   end
 
@@ -38,18 +47,18 @@ class CarsController < ApplicationController
   end
   # GET /cars/1/edit
   def edit
-    if params[:brand_name]
-      @brand_selected = Brand.find_by(brand_name: params[:brand_name])
+    @collections = policy_scope(SearchDatum).standard_data
+    @brand_selected = Brand.find_by(brand_name: params[:brand_name] || @car.brand.brand_name)
+
+    if @brand_selected
       @models = policy_scope(Model).where(brand_id: @brand_selected)
     else
       @models = policy_scope(Model).all
-      @brand_selected = policy_scope(Brand).all.first
     end
   end
 
   # POST /cars
   def create
-
     car_model = Model.find(params[:car][:models][:model_id].to_i)
     @car = Car.new(car_params)
     @car.model_id = car_model.id
@@ -64,37 +73,27 @@ class CarsController < ApplicationController
     end
   end
 
-  # POST /cars/new
-  def create_via_vin
+  def vin
+    @car = Car.new
+    authorize @car
+  end
 
-    unless car_params[:vin].nil? || car_params[:vin] == ""
-      vin = car_params[:vin]
-      data_hash = policy_scope(Car).vin_data_parse(vin)
-      useful = policy_scope(Car).vin_data_extract(data_hash)
+  def create_from_vin
+    vin = car_params[:vin]
+    data_hash = policy_scope(Car).vin_data_parse(vin)
+    useful = policy_scope(Car).vin_data_extract(data_hash)
 
-      new_brand = Brand.find_by brand_name: data_hash["make"]["name"]
-      new_model = Model.find_by name: data_hash["model"]["name"]
+    new_brand = Brand.find_by brand_name: data_hash["make"]["name"]
+    new_model = Model.find_by name: data_hash["model"]["name"]
 
-      @car = Car.new(useful)
-      @car.user = current_user
-      @car.model = new_model
-      authorize @car
+    @car = Car.new(useful)
+    @car.user = current_user
+    @car.model = new_model
+    authorize @car
 
-      @car.save
+    @car.save
 
-      render :new2
-    else
-      @car = Car.new()
-      authorize @car
-      if params[:brand_name]
-        @brand_selected = Brand.find_by(brand_name: params[:brand_name])
-        @models = policy_scope(Model).where(brand_id: @brand_selected)
-      else
-        @models = policy_scope(Model).all
-        @brand_selected = policy_scope(Brand).all.first
-      end
-      render :new2
-    end
+    redirect_to edit_car_path(@car)
   end
 
   # PATCH/PUT /cars/1

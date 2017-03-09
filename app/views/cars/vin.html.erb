@@ -4,14 +4,9 @@
 
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
-      <h2>Add car: Step 2/2 - Car Details</h2>
-
-      <% if @car.vin.blank? %>
-        <%= render 'form' %>
-        <% else %>
-        <%= render 'form_vin' %>
-        <% end %>
-      <%= link_to 'Exit', cars_path %>
+      <h2>Add Car: Step 1/2 - VIN Lookup</h2>
+      <%= render 'vinform' %>
+      <%= link_to 'skip', new_car_path %>
     </div>
 </div>
 </div>
