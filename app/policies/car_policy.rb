@@ -5,6 +5,10 @@ class CarPolicy < ApplicationPolicy
     end
   end
 
+  def new2?
+    true
+  end
+
   def create?
     true
   end

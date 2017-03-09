@@ -31,6 +31,11 @@ class CarsController < ApplicationController
     authorize @car
   end
 
+  def new2
+    @car = Car.new()
+    authorize @car
+
+  end
   # GET /cars/1/edit
   def edit
     if params[:brand_name]

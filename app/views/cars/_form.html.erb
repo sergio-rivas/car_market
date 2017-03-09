@@ -3,7 +3,7 @@
       <%= f.error_notification %>
       <div class="form-inputs">
         <%= f.simple_fields_for :brands do |p| %>
-        <%= p.input :brand_id ,collection: Brand.all.map{|b| b.brand_name}, selected: @brand_selected.brand_name  %>
+        <%= p.input :brand_id, include_blank: true, collection: Brand.all.map{|b| b.brand_name}, selected: @brand_selected.brand_name %>
         <% end %>
         <div id="models">
           <%= f.simple_fields_for :models do |p| %>
