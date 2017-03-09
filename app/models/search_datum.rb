@@ -2,7 +2,7 @@ class SearchDatum < ApplicationRecord
 
   def self.standard_data
     collections = {
-      size: ["Compact", "Midsize", "Fullsize", "XL"],
+      size: ["Compact Cars", "Midsize Cars", "Fullsize Cars", "XL Cars"],
       style: ["Sedan", "SUV", "Pickup", "Minivan", "Hatchback", "Convertible", "Coupe", "Wagon"],
       trans_speeds: ["4", "5", "6", "7"],
       trans_type: ["Manual", "Automatic", "Shiftable automatic"],
