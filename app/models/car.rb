@@ -54,7 +54,7 @@ class Car < ApplicationRecord
   end
 
   def brand
-    self.model.brand
+    self.model and self.model.brand
   end
 
 

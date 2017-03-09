@@ -3,11 +3,11 @@
       <%= f.error_notification %>
       <div class="form-inputs">
         <%= f.simple_fields_for :brands do |p| %>
-        <%= p.input :brand_id ,collection: Brand.all.map{|b| b.brand_name}, selected: @brand_selected.brand_name  %>
+        <%= p.input :brand_id ,collection: Brand.all.map{|b| b.brand_name}, selected: params[:brand_name] || @car.try(:brand).try(:brand_name)  %>
         <% end %>
         <div id="models">
           <%= f.simple_fields_for :models do |p| %>
-          <%= p.input :model_id, collection: @models %>
+          <%= p.input :model_id, collection: @models, selected: @car.try(:model).try(:id) %>
           <% end %>
         </div>
         <%= f.input :drive, include_blank: true, collection: @collections[:drive], selected: @car.drive %>
