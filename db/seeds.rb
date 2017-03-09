@@ -111,19 +111,21 @@ require 'faker'
 
 # # HEROKU FINAL SEED
 
-# Car.all.each do |car|
-#   car.mpg_city = rand(12..20).to_s if car.mpg_city.nil?
-#   car.mpg_highway = rand(25..36).to_s if car.mpg_highway.nil?
-#   car.year = rand(1990..2017).to_s if car.year.nil?
-#   car.size = ["Compact Cars", "Midsize Cars", "Fullsize Cars", "XL Cars"].sample if car.size.nil?
-#   car.style = ["Sedan", "SUV", "Pickup", "Minivan", "Hatchback", "Convertible", "Coupe", "Wagon"].sample if car.style.nil?
-#   car.price_suggested = "13,000" if car.price_suggested.nil?
-#   car.color_ext = Faker::Color.color_name
-#   car.color_int = ["Brown", "Black", "Grey"].sample if car.color_int.nil?
-#   car.doors = ["2", "4"].sample if car.doors.nil?
-#   car.drive = ["front wheel drive", "rear wheel drive", "four weel drive"].sample if car.drive.nil?
-#   car.trans_type = ["Automatic", "Manual", "Shiftable automatic"].sample if car.trans_type.nil?
-#   car.trans_speeds = ["5", "6"].sample if car.trans_speeds.nil?
-#   car.save
-# end
+Car.all.each do |car|
+  car.mpg_city = rand(12..20).to_s if car.mpg_city.nil?
+  car.mpg_highway = rand(25..36).to_s if car.mpg_highway.nil?
+  car.year = rand(1990..2017).to_s if car.year.nil?
+  car.size = ["Compact Cars", "Midsize Cars", "Fullsize Cars", "XL Cars"].sample if car.size.nil?
+  car.style = ["Sedan", "SUV", "Pickup", "Minivan", "Hatchback", "Convertible", "Coupe", "Wagon"].sample if car.style.nil?
+  car.price_suggested = "13,000" if car.price_suggested.nil?
+  car.color_ext = Faker::Color.color_name if car.color_ext.nil?
+  car.color_int = ["Brown", "Black", "Grey"].sample if car.color_int.nil?
+  car.doors = ["2", "4"].sample if car.doors.nil?
+  car.drive = ["front wheel drive", "rear wheel drive", "four weel drive"].sample if car.drive.nil?
+  car.trans_type = ["Automatic", "Manual", "Shiftable automatic"].sample if car.trans_type.nil?
+  car.trans_speeds = ["5", "6"].sample if car.trans_speeds.nil?
+  car.odometer = rand(2000..100000) if car.odometer.nil?
+  car.price = rand(3000..30000) if car.price.nil?
+  car.save
+end
 
