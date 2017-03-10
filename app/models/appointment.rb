@@ -6,7 +6,7 @@ class Appointment < ApplicationRecord
   validates :appointment_date, presence: true
   validates :appointment_time, presence: true
 
-  after_create :send_appointment_email
+  # after_create :send_appointment_email
 
   private
 
