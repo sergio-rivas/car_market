@@ -1,0 +1,22 @@
+<h1>You created a new appointment for <%=  @appointment.car.brand.brand_name %> <%=  @appointment.car.model.name %>!</h1>
+
+<p>
+
+   You set up an appointment on <%= @appointment.appointment_time %> to see <%=  @appointment.car.brand.brand_name %> <%=  @appointment.car.model.name %>.
+   <br>
+
+  This is not a confirmation of the appointment.
+  An email has been sent to the owner of the car with your request.
+
+  You may also contact the owner.
+  <ul>
+    <li><%= @appointment.car.user.first_name%> <%= @appointment.car.user.last_name %></li>
+    <li><%= @appointment.car.user.phone_number %></li>
+    <li> <%= @appointment.car.user.email %></li>
+  </ul>
+
+
+Kind regards,
+<br>
+Karrie team
+</p>

@@ -1,0 +1,17 @@
+<h1> <%= @appointment.user.first_name %> is interested in your car!</h1>
+
+
+<p>
+  <%= @appointment.user.first_name %> set up an appointment on <%= @appointment.appointment_time %>.
+
+  Contact info :
+  <ul>
+    <li><%= @appointment.user.first_name%> <%= @appointment.user.last_name %></li>
+    <li><%= @appointment.user.phone_number %></li>
+    <li> <%= @appointment.user.email %></li>
+  </ul>
+
+Kind regards,
+<br>
+Karrie Team
+</p>
