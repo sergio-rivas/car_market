@@ -8,6 +8,8 @@ before_action :set_appointment, only: [:destroy]
     authorize @appointment
     @appointment.car_id = params[:car_id]
     @appointment.user = current_user
+    @appointment.appointment_date = @date
+    @appointment.appointment_time = @time
     @car = Car.find(params[:car_id])
     authorize @car
 

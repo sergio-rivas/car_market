@@ -17,4 +17,10 @@
 
         document.location.href = '/cars/new?brand_name='+brand_text;
       });
+
+      $("#filter-button").click(function(){
+        $("#filter-form").toggle()
+      });
     });
+
+
