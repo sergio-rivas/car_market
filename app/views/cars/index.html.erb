@@ -1,32 +1,35 @@
-<div class="wrapper" style="overflow:auto; background-color: white;">
-  <div class="container" style="background-color: transparent; margin: 0px; display: block; width: 100%">
+<div class="wrapper">
+  <div class="container" style="background-color: transparent; display width: 100%">
 
-  <p id="notice" style="margin: 0px;"><%= notice %></p>
-
+    <p id="notice" style="margin: 0px;"><%= notice %></p>
 
     <div class="row">
-      <div class="col-xs-12 col-sm-3" style="background-color: white; overflow: scroll; height: 88vh; margin-top: 0; padding: 30px 20px 10px 10px;">
-
-
-        <h2>Filters</h2>
+      <div class="col-xs-12 col-sm-6 col-sm-offset-3" style="background-color: white; margin-top: 0; padding: 0px 20px 10px 10px;">
+        <div id="filter-button" class="btn btn-primary filter-btn">Filter</div>
         <% @collections = policy_scope(SearchDatum).standard_data %>
-
-        <% if params[:car].nil? %>
+        <div id="filter-form" style="display: none;">
+          <% if params[:car].nil? %>
           <% if @search_value.nil? %>
-            <%= render 'filter_form', @collections %>
+          <%= render 'filter_form', @collections %>
           <% else %>
-            <%= render 'filter_form_with_search', @collections %>
+          <%= render 'filter_form_with_search', @collections %>
           <% end %>
-        <% else %>
+          <% else %>
           <%= render 'filter_form_filtered', @collections %>
-        <% end %>
+          <% end %>
+        </div>
       </div>
+    </div>
 
-      <div class="col-xs-12 col-sm-9" style="padding: 0px;">
-        <div class="col-xs-12" style="background-color: whitesmoke; overflow: scroll; height: 88vh; display: flex; justify-content: flex-start; flex-wrap: wrap; padding: 15px">
-          <div class="col-xs-12"><h4>Result: <%= pluralize @cars.size, "car" %></h4></div>
+    <div class="row">
+      <div class="col-xs-12" style="padding: 0px;">
+
+        <div class="col-xs-12" style="background-color: whitesmoke; padding: 15px">
+          <h4>Result: <%= pluralize @cars.size, "car" %></h4>
           <% @cars.each do |car| %>
-            <div class="card" style="margin-right: 0.8em; width: 250px; height: 150px; border-radius: 4px; background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), <% if car.photos? %> url('<%= cl_image_path car.photos[0].path, height: 800, width: 600, crop: :fit %>' <% end %>);">
+
+          <div class="col-xs-12 col-sm-4">
+            <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), <% if car.photos? %> url('<%= cl_image_path car.photos[0].path, height: 800, width: 600, crop: :fit %>' <% end %>);">
               <div class="card-category"><%= car.price %> EUR</div>
               <div class="card-description">
                 <h2><%= car.model.brand.brand_name %></h2>
@@ -34,12 +37,14 @@
               </div>
               <%= link_to "", car_path(car.id), {class: "card-link"} %>
             </div>
+          </div>
+
           <% end %>
         </div>
 
       </div>
-
     </div>
+
   </div>
 </div>
 
