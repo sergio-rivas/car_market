@@ -36,6 +36,7 @@ gem "gmaps4rails"
 group :development, :test do
   gem 'binding_of_caller'
   gem 'better_errors'
+  gem "letter_opener"
 
   gem 'pry-byebug'
   gem 'pry-rails'
