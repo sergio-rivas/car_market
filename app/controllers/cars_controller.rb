@@ -6,7 +6,10 @@ class CarsController < ApplicationController
 
   # GET /cars
   def index
+    @cars = []
+
     if params[:car].nil?
+
       if params[:search_value].nil?
         @brands = policy_scope(Brand).all
         @cars = policy_scope(Car).all
@@ -16,7 +19,6 @@ class CarsController < ApplicationController
       end
     else
       @cars = find_cars_of_brands(params[:car][:brand]) & find_cars_of_attribute("trans_type", params[:car][:trans_type]) & find_cars_below_attribute("price", params[:car][:price]) & find_cars_below_attribute("odometer", params[:car][:odometer]) & find_cars_above_attribute("year", params[:car][:year]) & find_cars_of_attribute("size", params[:car][:size]) & find_cars_of_attribute("style", params[:car][:style]) & find_cars_of_attribute("drive", params[:car][:drive]) & find_cars_of_attribute("doors", params[:car][:doors])
-
     end
   end
 
@@ -133,7 +135,7 @@ class CarsController < ApplicationController
       if param.blank?
         @cars = policy_scope(Car).all
       else
-        @brands = policy_scope(Brand).where("brand_name LIKE ?", "%#{param}%")
+        @brands = policy_scope(Brand).where("lower(brand_name) LIKE ?", "%#{param.downcase}%")
         @cars = []
         @brands.each do |brand|
           @cars << brand.cars
