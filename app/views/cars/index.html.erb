@@ -8,15 +8,7 @@
         <div id="filter-button" class="btn btn-primary filter-btn">Filter</div>
         <% @collections = policy_scope(SearchDatum).standard_data %>
         <div id="filter-form" style="display: none;">
-          <% if params[:car].nil? %>
-          <% if @search_value.nil? %>
           <%= render 'filter_form', @collections %>
-          <% else %>
-          <%= render 'filter_form_with_search', @collections %>
-          <% end %>
-          <% else %>
-          <%= render 'filter_form_filtered', @collections %>
-          <% end %>
         </div>
       </div>
     </div>
