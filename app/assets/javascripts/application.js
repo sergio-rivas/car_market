@@ -52,7 +52,8 @@
 
       $(".js-brand-basic-single").select2({
         dropdownAutoWidth: true,
-        width: '100%'
+        width: '100%',
+        height: '36px'
       });
 
     });
