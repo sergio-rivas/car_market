@@ -22,11 +22,11 @@
       });
 
       $("#filter-button2").click(function(){
-        $("#filter-form2").toggle()
+        $("#filter-form2").toggle();
       });
 
       $("#filter-button").click(function(){
-        $("#filter-form").toggle()
+        $("#filter-form").toggle();
       });
 
       function getSearchResults(){
