@@ -12,7 +12,7 @@
 
         <div class="item active">
           <% if @car.photos.any? %>
-            <%= cl_image_tag @car.photos[0].path, crop: :fill %>
+          <%= cl_image_tag @car.photos[0].path, crop: :fill %>
         </div>
 
         <% @car.photos[1..-1].each do |photo| %>
@@ -36,33 +36,10 @@
     </div>
   </div>
   <div class="container">
-    <div class="show-main"></div>
-
-
-    <div class="sidebar">
-      <div class="price">
-        <span class="currency">$</span>
-        <span class="amount"> <%= @car.price %> </span>
-      </div>
-      <%= render 'appointment_form', car: @car, appointment: @appointment %>
-      <p id="notice"><%= notice %></p>
-
-      <div>
-        <h3>Contact seller</h3>
-        <div>
-          <p>Tel: <%= link_to @car.user.phone_number, "tel:#{@car.user.phone_number}" %></p>
-        </div>
-        <div>
-        <p>Email: <%= mail_to @car.user.email %></p>
-        </div>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#sms-form">
-          Send SMS
-        </button>
-      </div>
-    </div>
-    <div class="show-main">
-      <div class="section" style="margin-top: 50px; width:100%;">
+    <div class="col-md-9 col-xs-12 ">
+      <div class="row">
         <div class="col-xs-3 main-title">The car</div>
+
         <div class="col-xs-9 main-details">
           <div class="row">
             <div class="col-xs-4 list-details"> <%= @car.model.brand.brand_name %></div>
@@ -73,51 +50,77 @@
             <div class="col-xs-4 list-details"> <%= @car.odometer %></div>
             <div class="col-xs-4 list-details"> <%= @car.fuel_type %></div>
             <div class="col-xs-4 list-details"> <%= @car.trans_type %></div>
-          </div>
+          </div> <br>
         </div>
       </div>
 
-      <div class="section" style="margin-top: 50px; width:100%;">
+      <div class="row">
         <div class="col-xs-3 main-title">Description</div>
         <div class="col-xs-9 main-details"><%= @car.description %></div>
-      </div>
-      <div class="section" style="margin-top: 50px; width:100%;">
+      </div><br>
+      <div class="row">
         <div class="col-xs-3 main-title">Features</div>
         <div class="col-xs-9 main-details">
           <div class="row">
             <div class="col-xs-4 list-details"> <%= @car.style %></div>
             <div class="col-xs-4 list-details"> <%= @car.size %></div>
             <div class="col-xs-4 list-details"> doors:<%= @car.doors%></div>
-          </div>
+          </div><br>
           <div class="row">
             <div class="col-xs-4 list-details"> <%= @car.drive %></div>
             <div class="col-xs-4 list-details"> <%= @car.trans_speeds %></div>
             <div class="col-xs-4 list-details"> <%= @car.color_ext%></div>
-          </div>
+          </div> <br><br>
         </div>
       </div>
       <div style="clear:both;"></div>
     </div>
+    <%= render 'sms-modal' %>
+
+    <div class="col-xs-12 col-md-3">
+      <div class="row">
+      <div class="sidebar">
+        <div class="price">
+          <span class="currency">$</span>
+          <span class="amount"> <%= @car.price %> </span>
+        </div>
+        <%= render 'appointment_form', car: @car, appointment: @appointment %>
+        <p id="notice"><%= notice %></p>
+
+        <div>
+          <h3>Contact seller</h3>
+          <div>
+            <p>Tel: <%= link_to @car.user.phone_number, "tel:#{@car.user.phone_number}" %></p>
+          </div>
+          <div>
+            <p>Email: <%= mail_to @car.user.email %></p>
+          </div>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#sms-form">
+            Send SMS
+          </button>
+        </div>
+      </div>
+    </div>
+
 
   </div>
-  <%= render 'sms-modal' %>
-
-  <% content_for :after_js do %>
-  <script type="text/javascript">
-    $(document).ready(function(){
-      $(document).on('focus', '[data-behaviour~="datepicker"]', function(e){
-        $(this).datepicker({
-          daysOfWeekHighlighted: "0,6",
-          autoclose: true,
-          toggleActive: true,
-          format: "yyyy-mm-dd",
-          todayHighlight: true,
-          startDate: new Date()
-        });
+</div>
+<% content_for :after_js do %>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $(document).on('focus', '[data-behaviour~="datepicker"]', function(e){
+      $(this).datepicker({
+        daysOfWeekHighlighted: "0,6",
+        autoclose: true,
+        toggleActive: true,
+        format: "yyyy-mm-dd",
+        todayHighlight: true,
+        startDate: new Date()
       });
     });
-  </script>
-  <% end %>
+  });
+</script>
+<% end %>
 
 
 

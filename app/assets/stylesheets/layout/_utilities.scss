@@ -37,15 +37,12 @@
 }
 
 .sidebar{
-    float: right;
-    top: -32px;
     position: relative;
     background-color: #fff;
     color: #231f20;
     padding: 5px 0px 5px 10px;
     border-radius: 16px 16px 0 0;
     font-weight: normal;
-    width: 300px;
     z-index: 2;
     .price{
       margin-left:15px;
