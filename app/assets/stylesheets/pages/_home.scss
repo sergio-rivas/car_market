@@ -17,3 +17,40 @@
 .home {
   padding: 0 ;
 }
+
+
+@media (min-width: 600px){
+  .hp-carrie-slogan{
+    font-size: 5em;
+  }
+}
+
+.check_item{
+    display: none !important;
+    }
+
+    .clabel_item {
+    opacity: 0;
+    position:relative;
+    }
+    .filter-placehold{
+      position:absolute;
+      width: 120px;
+      height: 40px;
+      margin: -10px 0 0 -60px;
+      opacity: 0;
+    }
+    .checkspan{
+      color: #66d9be;
+      position:absolute;
+      margin-top: -16px;
+      margin-left: -10px;
+      font-size: 2em;
+    }
+    .check_item:checked + label {
+    opacity: 1;
+    }
+
+label {
+cursor: pointer;
+}
