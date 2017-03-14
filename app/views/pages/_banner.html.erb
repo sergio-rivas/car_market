@@ -1,7 +1,7 @@
 <div class="banner" style="background-image: linear-gradient(-225deg, rgba(102, 102, 204, 0.9) 0%, rgba(0, 0, 0, 0.2) 50%); background-size: cover; min-height: 90vh;">
   <div class="banner-content" style="width: 100%; padding: 10px">
 
-    <h2 class="hp-carrie-slogan" style="font-size: 5em;">
+    <h2 class="hp-carrie-slogan">
       <span> The <strong>BETTER</strong> way to buy a car </span>
     </h2>
 
@@ -21,62 +21,23 @@
 
 
 
-    <div class="col-xs-12 col-sm-8 col-sm-offset-2" id="filter-button" style="padding: 10px 10px 0px; background-color: #f7f7f7;">
-      <h3 class="title-container-text">  Bodystyle </h3>
+    <div class="col-xs-12 col-sm-8 col-sm-offset-2" id="filter-button2" style="padding: 10px 10px 0px; background-color: #f7f7f7;">
+      <h3 class="title-container-text">  Bodystyle <i class="fa fa-chevron-down" style="margin-left: 10px;"></i></h3>
     </div>
 
     <div class="col-xs-12 col-sm-8 col-sm-offset-2" style="padding: 10px; background-color: #f7f7f7;">
 
-      <div class="row" style="display: none; border-bottom: 1px solid #ccc" id="filter-form">
+    <form action="<%= cars_path  %>" class="simple_form /cars" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="✓">
 
-        <div class="col-xs-6 col-sm-3">
-          <div style="background-image: url('<%= asset_path "car-choose.gif" %>'); height: 40px; width: 120px; background-position: 50% -41px; margin: auto;"></div>
-          <h3 class="home-body"> SEDAN </h3>
-        </div>
-
-        <div class="col-xs-6 col-sm-3">
-          <div style="background-image: url('<%= asset_path "car-choose.gif" %>'); height: 40px; width: 120px; background-position: 50% -81px; margin: auto;"></div>
-          <h3 class="home-body"> SUV </h3>
-        </div>
-
-        <div class="col-xs-6 col-sm-3">
-          <div style="background-image: url('<%= asset_path "car-choose.gif" %>'); height: 40px; width: 120px; background-position: 50% -241px; margin: auto;"></div>
-          <h3 class="home-body"> PICKUP </h3>
-        </div>
-
-        <div class="col-xs-6 col-sm-3">
-          <div style="background-image: url('<%= asset_path "car-choose.gif" %>'); height: 40px; width: 120px; background-position: 50% -121px; margin: auto;"></div>
-          <h3 class="home-body"> MINIVAN </h3>
-        </div>
-
-        <div class="col-xs-6 col-sm-3">
-          <div style="background-image: url('<%= asset_path "car-choose.gif" %>'); height: 40px; width: 120px; background-position: 50% -201px; margin: auto;"></div>
-          <h3 class="home-body"> HATCHBACK </h3>
-        </div>
-
-        <div class="col-xs-6 col-sm-3">
-          <div style="background-image: url('<%= asset_path "car-choose.gif" %>'); height: 40px; width: 120px; background-position: 50% -281px; margin: auto;"></div>
-          <h3 class="home-body"> CONVERTIBLE </h3>
-        </div>
-        <div class="col-xs-6 col-sm-3">
-          <div style="background-image: url('<%= asset_path "car-choose.gif" %>'); height: 40px; width: 120px; background-position: 50% -161px; margin: auto;"></div>
-          <h3 class="home-body"> COUPE </h3>
-        </div>
-
-        <div class="col-xs-6 col-sm-3">
-          <div style="background-image: url('<%= asset_path "car-choose.gif" %>'); height: 40px; width: 120px; background-position: 50% 0px; margin: auto; "></div>
-          <h3 class="home-body"> WAGON </h3>
-        </div>
-
-    </div>
-
-
-
-    <div class="row">
-      <div class="col-xs-12 col-sm-4 col-sm-offset-4" style="padding: 10px;">
-        <%= link_to "APPLY FILTER", cars_path, class: "btn btn-primary btn-lg", style: "width: 100%;" %>
+      <div class="row" style="display: none; border-bottom: 1px solid #ccc" id="filter-form2">
+          <%= render 'home_filter' %>
       </div>
-    </div>
 
+      <div class="row">
+        <div class="col-xs-12 col-sm-4 col-sm-offset-4" style="padding: 10px;">
+          <input type="submit" name="commit" value="Find Your Dream Car!" class="btn btn-default btn btn-primary" style="width: 100%" data-disable-with="Apply filter">
+        </div>
+      </div>
+    </form>
   </div>
 </div>

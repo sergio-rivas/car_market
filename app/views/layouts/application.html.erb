@@ -18,6 +18,8 @@
 
     <%= render 'shared/footer' %>
     <%= javascript_include_tag 'application' %>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
     <%= cloudinary_js_config %>
 
     <%= yield :after_js %>

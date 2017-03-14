@@ -1,6 +1,12 @@
-<h1>Editing Car</h1>
+<div class="wrapper" style="overflow:auto;">
+<div class="container" style="width: 100%">
+<p id="notice" style="margin: 0px;"><%= notice %></p>
 
-<%= render 'form', car: @car %>
-
-<%= link_to 'Show', @car %> |
-<%= link_to 'Back', cars_path %>
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+        <h3>Edit details of your car</h3>
+        <%= render 'form', car: @car %>
+    </div>
+</div>
+</div>
+</div>

@@ -32,7 +32,10 @@ $yellow: #FFBA57;
 $orange: #E34B64;
 $green: #66D9BE;
 $white: #F7F7F7;
-$gray: #929D9E;
+$gray: #555555;
 $light-purple: #C6B9E4;
+
 $light-grey: lighten($gray, 15%);
-$extreme-white: lighten($white, 50%);
+$extreme-white: lighten($white, 50);
+$ultra-light-purple: #F9D8FF;
+

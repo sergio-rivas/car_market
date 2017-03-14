@@ -3,30 +3,30 @@
       <%= f.error_notification %>
       <div class="form-inputs">
         <%= f.simple_fields_for :brands do |p| %>
-        <%= p.input :brand_id ,collection: Brand.all.map{|b| b.brand_name}, selected: params[:brand_name] || @car.try(:brand).try(:brand_name)  %>
+        <%= p.input :brand_id, collection: Brand.all.map{|b| b.brand_name}, selected: params[:brand_name] || @car.try(:brand).try(:brand_name), input_html: { class: "js-brand-basic-single input-style"} %>
         <% end %>
         <div id="models">
           <%= f.simple_fields_for :models do |p| %>
-          <%= p.input :model_id, collection: @models, selected: @car.try(:model).try(:id) %>
+          <%= p.input :model_id, collection: @models, selected: @car.try(:model).try(:id), input_html: { class: "js-brand-basic-single input-style"} %>
           <% end %>
         </div>
-        <%= f.input :drive, include_blank: true, collection: @collections[:drive], selected: @car.drive %>
-        <%= f.input :doors, include_blank: true, collection: @collections[:doors], selected: @car.doors %>
-        <%= f.input :style, include_blank: true, collection: @collections[:style], selected: @car.style %>
-        <%= f.input :size, include_blank: true, collection: @collections[:size], selected: @car.size %>
-        <%= f.input :year, input_html: {value: @car.year || 3000} %>
-        <%= f.input :mpg_city, label: "MPG (City)", input_html: {value: @car.mpg_city || ''} %>
-        <%= f.input :mpg_highway, label: "MPG (Highway)", input_html: {value: @car.mpg_highway || ''} %>
-        <%= f.input :color_int, label: "Interior Color", input_html: {value: @car.color_int || ''} %>
-        <%= f.input :color_ext, label: "Exterior Color", input_html: {value: @car.color_ext || ''} %>
-        <%= f.input :price, placeholder: "Add price in EUR", input_html: {value: @car.price_suggested || ''}%>
-        <%= f.input :odometer, placeholder: "Add the current km status (numbers only)" %>
-        <%= f.input :fuel_type, collection: ["Gasoline", "Diesel", "Electric"] %>
-        <%= f.input :description, placeholder: "Is there any additional important information about the car?" %>
+        <%= f.input :price, placeholder: "Add price in EUR", input_html: {value: @car.price_suggested || '', class: "input-style"}, required: true %>
+        <%= f.input :drive, include_blank: true, collection: @collections[:drive], selected: @car.drive, input_html: { class: "input-style"} %>
+        <%= f.input :doors, include_blank: true, collection: @collections[:doors], selected: @car.doors, input_html: { class: "input-style"} %>
+        <%= f.input :style, include_blank: true, collection: @collections[:style], selected: @car.style, input_html: { class: "input-style"} %>
+        <%= f.input :size, include_blank: true, collection: @collections[:size], selected: @car.size, input_html: { class: "input-style"} %>
+        <%= f.input :year, placeholder: "Add year of manufacture", input_html: {value: @car.year || '', class: "input-style"} %>
+        <%= f.input :mpg_city, placeholder: "Add fuel consumption in city", label: "Fuel consumption (city) in miles per gallon", input_html: {value: @car.mpg_city || '', class: "input-style"} %>
+        <%= f.input :mpg_highway, placeholder: "Add fuel consumption in highways", label: "Fuel consumption (highway) in miles per gallon", input_html: {value: @car.mpg_highway || '', class: "input-style"} %>
+        <%= f.input :color_int, placeholder: "Add interior color", label: "Interior Color", input_html: {value: @car.color_int || '', class: "input-style"} %>
+        <%= f.input :color_ext, placeholder: "Add exterior color", label: "Exterior Color", input_html: {value: @car.color_ext || '', class: "input-style"} %>
+        <%= f.input :odometer, placeholder: "Add current status of km", placeholder: "Add the current km status (numbers only)", input_html: { class: "input-style"} %>
+        <%= f.input :fuel_type, collection: ["Gasoline", "Diesel", "Electric"], input_html: { class: "input-style"} %>
+        <%= f.input :description, placeholder: "Is there any additional important information about the car?", input_html: { class: "input-style"} %>
         <%= f.input :photos, as: :attachinary %>
       </div>
       <div class="form-actions">
-        <%= f.button :submit, class: "btn btn-primary" %>
+        <%= f.button :submit, class: "btn btn-primary", value: "Upload car", class: "submit-button btn-primary" %>
       </div>
       <% end %>
 
