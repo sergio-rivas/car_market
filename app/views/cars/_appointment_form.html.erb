@@ -1,13 +1,13 @@
-<div class="appointment" style="padding: 15px;">
+  <div class="appointment" style="padding: 15px;">
   <% array = (10..20).to_a %>
   <% array.each_with_index {|a, i| array[i] = a.to_s + ":00"}  %>
   <%= simple_form_for [@car, @appointment] do |f| %>
     <%= f.error_notification %>
     <div class="form-inputs">
-      <%= f.input :appointment_date, as: :string, required: true, input_html: { 'data-behaviour' => 'datepicker' }  %>
-      <%= f.input :appointment_time, as: :select, collection: array %>
+      <%= f.input :appointment_date, as: :string, required: true, placeholder: "#{Time.now.day}/#{Time.now.month}/#{Time.now.year}",  input_html: { 'data-behaviour' => 'datepicker' } %>
+      <%= f.input :appointment_time,  as: :select, collection: array %>
+      <%=  f.hint 'Set a day and time!'%>
     </div>
-
     <div class="form-actions">
       <%= f.button :submit, class: "btn btn-primary" %>
     </div>
@@ -16,5 +16,5 @@
 
 </div>
 
-
+<input type="hidden" name="startTime" value="10:00">
 

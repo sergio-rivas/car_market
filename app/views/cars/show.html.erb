@@ -34,8 +34,130 @@
         <span class="sr-only">Next</span>
       </a>
     </div>
+    <div class="price-mobile-vehicleListingSummary-vehiclePriceWrapper hidden-md hidden-lg">
+      <div class="price">
+        <div><span class="currency">$</span></div>
+        <div><span class="amount"><%= @car.price %></span></div>
+      </div>
+    </div>
   </div>
-  <div class="container">
+  <!-- mobile content -->
+
+
+
+
+  <div class="container hidden-md hidden-lg">
+    <div class="row">
+      <div class="cards clearfix" >
+        <h3>The car</h3>
+        <ul class="list-icons-showpage">
+          <li>
+            <%= image_tag("car-brand.png", class: :"icon-list")%>
+            <%= @car.model.brand.brand_name %> - <%= @car.model.name  %>
+          </li>
+
+          <li>
+            <%= image_tag("car-year.png", class: :"icon-list")%>
+            <%= @car.year %>
+          </li>
+
+          <li>
+            <%= image_tag("odometer.png", class: :"icon-list")%>
+            <%= @car.odometer%>km
+          </li>
+
+          <li>
+            <%= image_tag("fuel-type.png", class: :"icon-list")%>
+            <%= @car.fuel_type %>
+          </li>
+
+          <li>
+            <%= image_tag("car-transmission.png", class: :"icon-list")%>
+            <%= @car.trans_type %>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="cards clearfix" style="background-color: white">
+        <h3><%="  Description"%></h3>
+        <p><%= @car.description %></p>
+
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="cards clearfix">
+        <h3><%="Features"%></h3>
+<ul class="list-icons-showpage">
+          <li>
+            <%= image_tag("car-style.png", class: :"icon-list")%>
+            <%= @car.style %>
+          </li>
+          <li>
+            <%= image_tag("size.png", class: :"icon-list")%>
+            <%= @car.size  %>
+          </li>
+
+          <li>
+            <%= image_tag("car-door.png", class: :"icon-list")%>
+            <%= "#{@car.doors} doors" %>
+          </li>
+
+          <li>
+            <%= image_tag("car-drive.png", class: :"icon-list")%>
+            <%= @car.drive %>
+          </li>
+
+          <li>
+            <%= image_tag("car-speeds.png", class: :"icon-list")%>
+            <%= "#{@car.trans_speeds} speeds" %>
+          </li>
+
+          <li>
+            <%= image_tag("car-colorext.png", class: :"icon-list")%>
+            <%= "#{@car.color_ext}" %>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+
+
+
+    <div class="row">
+      <div class="cards clearfix" style="background-color: white">
+        <div class="sidebar-mobile">
+          <%= render 'appointment_form', car: @car, appointment: @appointment %>
+          <p id="notice"><%= notice %></p>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="cards clearfix">
+        <div>
+          <h3>Contact seller</h3>
+          <div>
+            <p>Tel: <%= link_to @car.user.phone_number, "tel:#{@car.user.phone_number}" %></p>
+          </div>
+          <div>
+            <p>Email: <%= mail_to @car.user.email %></p>
+          </div>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#sms-form">
+            Send SMS
+          </button>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+  <div class="container hidden-xs hidden-sm">
     <div class="col-md-9 col-xs-12 ">
       <div class="row">
         <div class="col-xs-3 main-title">The car</div>
@@ -77,50 +199,56 @@
     </div>
     <%= render 'sms-modal' %>
 
-    <div class="col-xs-12 col-md-3">
-      <div class="row">
-      <div class="sidebar">
-        <div class="price">
-          <span class="currency">$</span>
-          <span class="amount"> <%= @car.price %> </span>
-        </div>
-        <%= render 'appointment_form', car: @car, appointment: @appointment %>
-        <p id="notice"><%= notice %></p>
 
-        <div>
-          <h3>Contact seller</h3>
-          <div>
-            <p>Tel: <%= link_to @car.user.phone_number, "tel:#{@car.user.phone_number}" %></p>
+
+
+    <div class="col-md-3 hidden-xs hidden-sm">
+      <div class="row">
+        <div class="sidebar">
+          <div class="price">
+            <span class="currency">$</span>
+            <span class="amount"> <%= @car.price %> </span>
           </div>
+          <%= render 'appointment_form', car: @car, appointment: @appointment %>
+          <p id="notice"><%= notice %></p>
+
           <div>
-            <p>Email: <%= mail_to @car.user.email %></p>
+            <h3>Contact seller</h3>
+            <div>
+              <p>Tel: <%= link_to @car.user.phone_number, "tel:#{@car.user.phone_number}" %></p>
+            </div>
+            <div>
+              <p>Email: <%= mail_to @car.user.email %></p>
+            </div>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#sms-form">
+              Send SMS
+            </button>
           </div>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#sms-form">
-            Send SMS
-          </button>
         </div>
       </div>
+
+
     </div>
 
 
+
   </div>
-</div>
-<% content_for :after_js do %>
-<script type="text/javascript">
-  $(document).ready(function(){
-    $(document).on('focus', '[data-behaviour~="datepicker"]', function(e){
-      $(this).datepicker({
-        daysOfWeekHighlighted: "0,6",
-        autoclose: true,
-        toggleActive: true,
-        format: "yyyy-mm-dd",
-        todayHighlight: true,
-        startDate: new Date()
+  <% content_for :after_js do %>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $(document).on('focus', '[data-behaviour~="datepicker"]', function(e){
+        $(this).datepicker({
+          daysOfWeekHighlighted: "0,6",
+          autoclose: true,
+          toggleActive: true,
+          format: "yyyy-mm-dd",
+          todayHighlight: true,
+          startDate: new Date()
+        });
       });
     });
-  });
-</script>
-<% end %>
+  </script>
+  <% end %>
 
 
 
