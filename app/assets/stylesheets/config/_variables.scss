@@ -34,3 +34,5 @@ $green: #66D9BE;
 $white: #F7F7F7;
 $gray: #929D9E;
 $light-purple: #C6B9E4;
+$light-grey: lighten($gray, 15%);
+$extreme-white: lighten($white, 50%);
