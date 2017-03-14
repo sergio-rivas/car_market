@@ -1,5 +1,5 @@
 <div class="container" hidden=""></div>
-<div class="navbar-wagon">
+<div class="navbar-wagon navbar-wagon-fixed">
   <!-- Logo -->
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
   <%= image_tag "logo-dark.png" %>
@@ -9,12 +9,12 @@
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 
     <!-- Search form -->
-    <form action="<%= cars_path  %>" class="navbar-wagon-search" method="get">
+<!--     <form action="<%= cars_path  %>" class="navbar-wagon-search" method="get">
       <input type="text" class="navbar-wagon-search-input" name="search_value" placeholder="Search for brand" >
       <button type="submit" class="navbar-wagon-search-btn">
         <i class="fa fa-search"></i>
       </button>
-    </form>
+    </form> -->
 
     <!-- Different navigation if login or not -->
     <% if user_signed_in? %>
