@@ -8,7 +8,7 @@
   <div class="filter-container">
     <div class="filter-label">Brand:</div>
     <div class="col-xs-12">
-      <input type="text" class="form-control" name="car[brand]" id="_cars_brand" value="<%= params[:car].try(:[],:brand) %>">
+      <input type="text" class="form-control" name="car[brand]" id="_cars_brand" value="<%= params[:car].try(:[],:brand) || params[:search_value] %>">
     </div><!---->
   </div>
 

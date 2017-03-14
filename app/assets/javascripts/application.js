@@ -34,6 +34,7 @@
 
       $("#filter-button").click(function(){
         $("#filter-form").toggle();
+        getSearchResults();
       });
 
       $("#filter-submit").click(function(event){
