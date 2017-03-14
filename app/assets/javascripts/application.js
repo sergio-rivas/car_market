@@ -21,12 +21,41 @@
         document.location.href = '/cars/new?brand_name='+brand_text;
       });
 
+      $("#filter-button2").click(function(){
+        $("#filter-form2").toggle();
+      });
+
+      $("#filter-trans").click(function(){
+        $("#filter-form-trans").toggle();
+      });
+      $("#filter-basic").click(function(){
+        $("#filter-form-basic").toggle();
+      });
+
       $("#filter-button").click(function(){
+        $("#filter-form").toggle();
+      });
+
+      $("#filter-submit").click(function(event){
+        event.preventDefault();
         getSearchResults();
-        $("#filter-form").toggle()
+        return false;
       });
 
       function getSearchResults(){
+        var styleCheckboxes = $.map(jQuery("[name='styles[]']:checked"), function(i, el) {
+          return $(i).val();
+        });
+        var trans_typeCheckboxes = $.map(jQuery("[name='trans_types[]']:checked"), function(i, el) {
+          return $(i).val();
+        });
+        var trans_speedsCheckboxes = $.map(jQuery("[name='trans_speeds[]']:checked"), function(i, el) {
+          return $(i).val();
+        });
+        var driveCheckboxes = $.map(jQuery("[name='drive[]']:checked"), function(i, el) {
+          return $(i).val();
+        });
+
         $.ajax({
           type: "GET",
           url: "/cars",
@@ -35,12 +64,13 @@
             "car[price]": jQuery("#_cars_price").val(),
             "car[odometer]": jQuery("#_cars_odometer").val(),
             "car[year]": jQuery("#_cars_year").val(),
-            "car[trans_type]": jQuery("#_cars_trans_type").val(),
-            "car[trans_speeds]": jQuery("#_cars_trans_speeds").val(),
-            "car[size]": jQuery("#_cars_size").val(),
-            "car[style]": jQuery("#_cars_style").val(),
-            "car[doors]": jQuery("#_cars_doors").val(),
-            "car[drive]": jQuery("#_cars_drive").val(),
+            "car[trans_type][]": trans_typeCheckboxes,
+            "car[trans_speeds][]": trans_speedsCheckboxes,
+            // "car[size]": jQuery("#_cars_size").val(),
+            "car[style][]": styleCheckboxes,
+            // "car[doors]": jQuery("#_cars_doors").val(),
+            "car[drive][]": driveCheckboxes,
+
           },
           success: function(data) {
             var results = jQuery(data).find('#js_results').html();
