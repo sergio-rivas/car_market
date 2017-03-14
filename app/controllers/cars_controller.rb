@@ -7,10 +7,11 @@ class CarsController < ApplicationController
   # GET /cars
   def index
     @cars = []
+    @styles=[]
     if params[:car].nil?
       if params[:styles]
         @cars = find_cars_of_attribute("style", params[:styles])
-
+        @styles = params[:styles]
       elsif params[:search_value].nil?
         @brands = policy_scope(Brand).all
         @cars = policy_scope(Car).all

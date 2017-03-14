@@ -33,9 +33,18 @@
   .item img{
     width: 100vw;
     object-fit: cover;
-    height: 80vh;
+    height: 40vh;
   }
 }
+
+@media (min-width: 600px){
+  .container-fluid{
+    .item img{
+      height: 80vh;
+    }
+  }
+}
+
 
 .sidebar{
   position: relative;
