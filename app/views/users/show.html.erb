@@ -1,58 +1,60 @@
-<div class="container">
-<div class="row">
-<div class="col-sm-6 col-sm-offset-3">
-<div class="user" style="background-color: #FFFFFF">
-  <h2>Your profile</h2>
-  <div>
-    <p><strong>Name:</strong> <%= @user.first_name %> <%= @user.last_name
-     %></p>
-   </div>
-   <div class="row">
-   <div class ="col-xs-3">
-     <% avatar_url = current_user.facebook_picture_url || "https://placehold.it/30x30" %>
-     <%= image_tag avatar_url, class: 'avatar-large' %>
-   </div>
-   <div class="col-xs-9">
-    <p><strong>e-mail <%= @user.email %></strong></p>
-   </div>
-   </div>
-   <br>
-   <p><strong>My cars</strong></p>
-   <div class= row >
-     <div class= "col-md-12">
-       <% current_user.cars.each do |car| %>
-       <div class="row">
-        <div class="col-xs-3 list-details"> <%= car.model.brand.brand_name %></div>
-        <div class="col-xs-3 list-details"> <%= car.model.name %></div>
-        <div class="col-xs-3 list-details"> <%= car.year %></div>
-      </div> <br>
-      <div class="row">
-        <div class="col-xs-3 list-details"> <%= car.odometer %></div>
-        <div class="col-xs-3 list-details"> <%= car.fuel_type %></div>
-        <div class="col-xs-3 list-details"> <%= car.trans_type %></div>
-        <div class="col-xs-1 list-details"> <%= link_to "Edit", edit_car_path(car), data: {  } %></div>
-        <div class="col-xs-1 list-details"> <%= link_to "Delete", car_path(car), method: :delete, data: { confirm: "Are you sure?" }  %></div>
-        <div class="col-xs-1 list-details"> <%= link_to "Show", car_path(car), data: {  } %></div>
-      </div> <br> <br>
-      <% end %>
+<div class="container" style="margin-top: 15px">
+  <div class="col-sm-8 col-sm-offset-2" style="background-color: #FFFFFF">
+   <div class="row profile-box">
+     <div class ="col-xs-3" id="profile-avatar">
+      <% avatar_url = current_user.facebook_picture_url || "https://placehold.it/30x30" %>
+      <%= image_tag avatar_url, class: 'avatar-large' %>
+    </div>
+    <div class="col-xs-9">
+      <p><strong>Name:</strong> <%= @user.first_name %> <%= @user.last_name%></p>
+      <p><strong>E-mail:</strong> <%= @user.email %></p>
     </div>
   </div>
 
-  <h4><%= pluralize @user.appointments.size, "appointment" %></h4>
-  <% @buyer_appointments.each do |appointment| %>
-  <ul>
-    <li>
-      <p><%= appointment.appointment_date %>, <%= appointment.appointment_time.time.hour %>:00 <%= link_to "Delete", user_appointment_path(user_id: current_user.id, id: appointment.id,return_to: user_path(current_user)), method: :delete, data: { } %> </p>
-
-      <ul>
-        <li><%= appointment.car.model.brand.brand_name %></li>
-        <li><%= appointment.car.model.name %></li>
-      </ul>
-    </li>
-  </ul>
+  <div class="row profile-cars">
+    <h4>My cars</h4>
+    <% current_user.cars.each do |car| %>
+    <div class= "col-xs-12 profile-row">
+     <div class="col-xs-9">
+       <div class="profile-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), <% if car.photos? %> url('<%= cl_image_path car.photos[0].path, height: 800, width: 600, crop: :fit %>' <% end %>);">
+        <div class="card-category"><%= car.price %> EUR</div>
+        <div class="card-description">
+          <h2><%= car.model.brand.brand_name %></h2>
+          <p><%= car.model.name %></p>
+        </div>
+        <%= link_to "", car_path(car.id), {class: "card-link"} %>
+      </div>
+    </div>
+    <div class=col-xs-3>
+      <div class="profile-buttons">
+        <div class="vertical-buttons">
+          <%= link_to edit_car_path(car) do %>
+            <i class="fa fa-pencil"></i>  <%= t(".new_car", default: "") %>
+          <% end %>
+          <%= link_to car_path(car), method: :delete, data: { confirm: "Are you sure to delete?" } do %>
+            <i class="fa fa-trash-o"></i>  <%= t(".delete_car", default: "") %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
   <% end %>
-
 </div>
+
+<h4><%= pluralize @user.appointments.size, "appointment" %></h4>
+<% @buyer_appointments.each do |appointment| %>
+<ul>
+  <li>
+    <p><%= appointment.appointment_date %>, <%= appointment.appointment_time.time.hour %>:00 <%= link_to "Delete", user_appointment_path(user_id: current_user.id, id: appointment.id,return_to: user_path(current_user)), method: :delete, data: { } %> </p>
+
+    <ul>
+      <li><%= appointment.car.model.brand.brand_name %></li>
+      <li><%= appointment.car.model.name %></li>
+    </ul>
+  </li>
+</ul>
+<% end %>
+
 </div>
 </div>
 </div>
