@@ -5,11 +5,11 @@
 
     <div class="row">
       <div class="col-xs-12 col-sm-6 col-sm-offset-3" style="background-color: white; margin-top: 0; padding: 0px 20px 10px 10px;">
-        <div id="filter-button" class="btn btn-primary filter-btn">Filter</div>
         <% @collections = policy_scope(SearchDatum).standard_data %>
         <div id="filter-form" style="display: none;">
           <%= render 'filters_mobile', @collections %>
         </div>
+        <div id="filter-button" class="btn btn-primary filter-btn">Filter</div>
       </div>
     </div>
 

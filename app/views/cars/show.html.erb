@@ -91,7 +91,10 @@
     <div class="row">
       <div class="cards clearfix">
         <h3><%="Features"%></h3>
-          <ul class="list-icons-showpage">
+
+
+        <ul class="list-icons-showpage">
+
           <li>
             <%= image_tag("car-style.png", class: :"icon-list")%>
             <%= @car.style %>
@@ -129,6 +132,7 @@
 
     <div class="row">
       <div class="cards clearfix" style="background-color: white">
+        <h3>Make an appointment</h3>
         <div class="sidebar-mobile">
           <%= render 'appointment_form', car: @car, appointment: @appointment %>
           <p id="notice"><%= notice %></p>

@@ -7,8 +7,8 @@
 
   <div class="col-xs-6 col-sm-3 text-center">
     <div style="background-image: url('<%= asset_path "car-choose.gif" %>'); height: 40px; width: 120px; background-position: 50% -41px; margin: auto;">
-        <input type="checkbox" class="check_item" name="styles[]" id="radio1" value="Sedan">
-        <label class="clabel_item" for="radio1"><img class="filter-placehold" alt=""><span class="checkspan"><i class="fa fa-check" aria-hidden="true"></i>
+        <input type="checkbox" class="check_item" name="styles[]" id="Sedan" value="Sedan" <%= "checked" if @styles.include? "Sedan" %>>
+        <label class="clabel_item" for="Sedan"><img class="filter-placehold" alt=""><span class="checkspan"><i class="fa fa-check" aria-hidden="true"></i>
         </span></label>
     </div>
     <h3 class="home-body"> SEDAN </h3>
@@ -16,8 +16,8 @@
 
   <div class="col-xs-6 col-sm-3 text-center">
     <div style="background-image: url('<%= asset_path "car-choose.gif" %>'); height: 40px; width: 120px; background-position: 50% -81px; margin: auto;">
-        <input type="checkbox" class="check_item" name="styles[]" id="radio2" value="SUV">
-        <label class="clabel_item" for="radio2"><img class="filter-placehold" alt=""><span class="checkspan"><i class="fa fa-check" aria-hidden="true"></i>
+        <input type="checkbox" class="check_item" name="styles[]" id="SUV" value="SUV" <%= "checked" if @styles.include? "SUV" %>>
+        <label class="clabel_item" for="SUV"><img class="filter-placehold" alt=""><span class="checkspan"><i class="fa fa-check" aria-hidden="true"></i>
         </span></label>
     </div>
     <h3 class="home-body"> SUV </h3>
@@ -25,8 +25,8 @@
 
   <div class="col-xs-6 col-sm-3 text-center">
     <div style="background-image: url('<%= asset_path "car-choose.gif" %>'); height: 40px; width: 120px; background-position: 50% -241px; margin: auto;">
-        <input type="checkbox" class="check_item" name="styles[]" id="radio3" value="Pickup">
-        <label class="clabel_item" for="radio3"><img class="filter-placehold" alt=""><span class="checkspan"><i class="fa fa-check" aria-hidden="true"></i>
+        <input type="checkbox" class="check_item" name="styles[]" id="Pickup" value="Pickup" <%= "checked" if @styles.include? "Pickup" %>>
+        <label class="clabel_item" for="Pickup"><img class="filter-placehold" alt=""><span class="checkspan"><i class="fa fa-check" aria-hidden="true"></i>
         </span></label>
     </div>
     <h3 class="home-body"> PICKUP </h3>
@@ -34,8 +34,8 @@
 
   <div class="col-xs-6 col-sm-3 text-center">
     <div style="background-image: url('<%= asset_path "car-choose.gif" %>'); height: 40px; width: 120px; background-position: 50% -121px; margin: auto;">
-        <input type="checkbox" class="check_item" name="styles[]" id="radio4" value="Minivan">
-        <label class="clabel_item" for="radio4"><img class="filter-placehold" alt=""><span class="checkspan"><i class="fa fa-check" aria-hidden="true"></i>
+        <input type="checkbox" class="check_item" name="styles[]" id="Minivan" value="Minivan" <%= "checked" if @styles.include? "Minivan" %>>
+        <label class="clabel_item" for="Minivan"><img class="filter-placehold" alt=""><span class="checkspan"><i class="fa fa-check" aria-hidden="true"></i>
         </span></label>
     </div>
     <h3 class="home-body"> MINIVAN </h3>
@@ -43,8 +43,8 @@
 
   <div class="col-xs-6 col-sm-3 text-center">
     <div style="background-image: url('<%= asset_path "car-choose.gif" %>'); height: 40px; width: 120px; background-position: 50% -201px; margin: auto;">
-        <input type="checkbox" class="check_item" name="styles[]" id="radio5" value="Hatchback">
-        <label class="clabel_item" for="radio5"><img class="filter-placehold" alt=""><span class="checkspan"><i class="fa fa-check" aria-hidden="true"></i>
+        <input type="checkbox" class="check_item" name="styles[]" id="Hatchback" value="Hatchback" <%= "checked" if @styles.include? "Hatchback" %>>
+        <label class="clabel_item" for="Hatchback"><img class="filter-placehold" alt=""><span class="checkspan"><i class="fa fa-check" aria-hidden="true"></i>
         </span></label>
     </div>
     <h3 class="home-body"> HATCHBACK </h3>
@@ -52,16 +52,16 @@
 
   <div class="col-xs-6 col-sm-3 text-center">
     <div style="background-image: url('<%= asset_path "car-choose.gif" %>'); height: 40px; width: 120px; background-position: 50% -281px; margin: auto;">
-        <input type="checkbox" class="check_item" name="styles[]" id="radio6" value="Convertible">
-        <label class="clabel_item" for="radio6"><img class="filter-placehold" alt=""><span class="checkspan"><i class="fa fa-check" aria-hidden="true"></i>
+        <input type="checkbox" class="check_item" name="styles[]" id="Convertible" value="Convertible" <%= "checked" if @styles.include? "Convertible" %>>
+        <label class="clabel_item" for="Convertible"><img class="filter-placehold" alt=""><span class="checkspan"><i class="fa fa-check" aria-hidden="true"></i>
         </span></label>
     </div>
     <h3 class="home-body"> CONVERTIBLE </h3>
   </div>
   <div class="col-xs-6 col-sm-3 text-center">
     <div style="background-image: url('<%= asset_path "car-choose.gif" %>'); height: 40px; width: 120px; background-position: 50% -161px; margin: auto;">
-        <input type="checkbox" class="check_item" name="styles[]" id="radio7" value="Coupe">
-        <label class="clabel_item" for="radio7"><img class="filter-placehold" alt=""><span class="checkspan"><i class="fa fa-check" aria-hidden="true"></i>
+        <input type="checkbox" class="check_item" name="styles[]" id="Coupe" value="Coupe" <%= "checked" if @styles.include? "Coupe" %>>
+        <label class="clabel_item" for="Coupe"><img class="filter-placehold" alt=""><span class="checkspan"><i class="fa fa-check" aria-hidden="true"></i>
         </span></label>
     </div>
     <h3 class="home-body"> COUPE </h3>
@@ -69,8 +69,8 @@
 
   <div class="col-xs-6 col-sm-3 text-center">
     <div style="background-image: url('<%= asset_path "car-choose.gif" %>'); height: 40px; width: 120px; background-position: 50% 0px; margin: auto; ">
-        <input type="checkbox" class="check_item" name="styles[]" id="radio8" value="Wagon">
-        <label class="clabel_item" for="radio8"><img class="filter-placehold" alt=""><span class="checkspan"><i class="fa fa-check" aria-hidden="true"></i>
+        <input type="checkbox" class="check_item" name="styles[]" id="Wagon" value="Wagon" <%= "checked" if @styles.include? "Wagon" %>>
+        <label class="clabel_item" for="Wagon"><img class="filter-placehold" alt=""><span class="checkspan"><i class="fa fa-check" aria-hidden="true"></i>
         </span></label>
     </div>
     <h3 class="home-body"> WAGON </h3>
