@@ -8,7 +8,7 @@
         <div id="filter-button" class="btn btn-primary filter-btn">Filter</div>
         <% @collections = policy_scope(SearchDatum).standard_data %>
         <div id="filter-form" style="display: none;">
-          <%= render 'filter_form', @collections %>
+          <%= render 'filters_mobile', @collections %>
         </div>
       </div>
     </div>
