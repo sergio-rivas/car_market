@@ -3,14 +3,12 @@
 }
 
 .profile-box {
-  padding: 10px 5px 5px 10px;
-  background-color: $ultra-light-purple;
+  padding: 0px 10px 20px 10px;
 }
 
 .profile-cars {
-  padding: 10px 5px 20px 10px;
-  border-style: solid;
-  border-width: 0 0 1px 0;
+  padding: 5px 5px 20px 10px;
+  background-color: white;
 }
 
 .profile-buttons {
@@ -28,6 +26,20 @@
 
 .profile-row {
   display: flex;
-  justify-content: space-between;
   align-items: center;
 }
+
+.appointments {
+  display: flex;
+  background-color: white;
+  padding: 15px 15px 5px 15px;
+}
+
+.appointment-details {
+  width: 90%;
+}
+
+.appointment-delete {
+  font-size: 24px;
+}
+

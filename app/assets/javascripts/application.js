@@ -32,6 +32,15 @@
         $("#filter-form-basic").toggle();
       });
 
+      $(".profile-cars h3").click(function(){
+        $(".profile-row").toggle();
+      });
+
+      $(".profile-box h3").click(function(){
+        $(".appointments").toggle();
+        $("#appointment-number").toggle();
+      });
+
       $("#filter-button").click(function(){
         $("#filter-form").toggle();
         getSearchResults();
