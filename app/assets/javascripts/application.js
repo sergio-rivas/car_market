@@ -20,7 +20,7 @@
 
         document.location.href = '/cars/new?brand_name='+brand_text;
       });
-      var speed = 200;
+      var speed = 250;
 
       $("#filter-button2").click(function(){
         $("#filter-form2").slideToggle(speed);
