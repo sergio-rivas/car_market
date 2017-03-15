@@ -1,10 +1,14 @@
-<%= simple_form_for @car, url: vin_cars_path do |f| %>
+<%= simple_form_for @car, url: vin_cars_path, html: {class: 'form-validate'} do |f| %>
   <%= f.error_notification %>
     <div class="form-inputs">
-      <%= f.input :vin, label: false %>
+      <%= f.input :vin, label: false, id: "vinnumber", input_html: {class: 'validate[required],custom[onlyLetterNumber]'} %>
     </div>
 
     <div class="form-actions">
       <%= f.button :submit, class: "btn btn-primary", value: "Next", class: "submit-button btn-primary" %>
     </div>
+<% end %>
+
+<% content_for :after_js do %>
+
 <% end %>
