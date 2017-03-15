@@ -20,29 +20,30 @@
 
         document.location.href = '/cars/new?brand_name='+brand_text;
       });
+      var speed = 200;
 
       $("#filter-button2").click(function(){
-        $("#filter-form2").toggle();
+        $("#filter-form2").slideToggle(speed);
       });
 
       $("#filter-trans").click(function(){
-        $("#filter-form-trans").toggle();
+        $("#filter-form-trans").slideToggle(speed);
       });
       $("#filter-basic").click(function(){
-        $("#filter-form-basic").toggle();
+        $("#filter-form-basic").slideToggle(speed);
       });
 
       $(".profile-cars h3").click(function(){
-        $(".profile-row").toggle();
+        $(".profile-row").slideToggle(speed);
       });
 
       $(".profile-box h3").click(function(){
-        $(".appointments").toggle();
-        $("#appointment-number").toggle();
+        $(".appointments").slideToggle(speed);
+        $("#appointment-number").slideToggle(speed);
       });
 
       $("#filter-button").click(function(){
-        $("#filter-form").toggle();
+        $("#filter-form").slideToggle(speed);
         getSearchResults();
       });
 
