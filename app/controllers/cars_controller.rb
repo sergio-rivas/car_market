@@ -96,6 +96,7 @@ class CarsController < ApplicationController
     @car = Car.new(useful)
     @car.user = current_user
     @car.model = new_model
+    @car.price = useful[:price_suggested]
     authorize @car
 
     @car.save
