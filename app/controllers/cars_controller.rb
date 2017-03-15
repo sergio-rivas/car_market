@@ -84,6 +84,11 @@ class CarsController < ApplicationController
 
   def create_from_vin
     vin = car_params[:vin]
+    # if not vin.present?
+    #   return redirect_to vin_cars_path
+    #   raise
+    # end
+
     data_hash = policy_scope(Car).vin_data_parse(vin)
     useful = policy_scope(Car).vin_data_extract(data_hash)
 
