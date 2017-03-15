@@ -1,4 +1,4 @@
-<div class="banner" style="background-image: linear-gradient(-200deg, rgba(102, 102, 204, 0.51) 0%, rgba(0, 0, 0, 0.2) 141%), url(<%= image_path('banner-image.jpeg') %>); background-size: cover; min-height: 90vh;">
+<div class="banner" style="background-image: linear-gradient(-200deg, rgba(102, 102, 204, 0.51) 0%, rgba(0, 0, 0, 0.2) 141%), url('/banner-image.jpeg'); background-size: cover; min-height: 90vh;">
   <div class="banner-content" style="width: 100%; padding: 10px">
 
     <h2 class="hp-carrie-slogan">
@@ -21,11 +21,11 @@
 
 
 
-    <div class="col-xs-12 col-sm-6 col-sm-offset-3" id="filter-button2" style="padding: 10px 10px 0px; background-color: #f7f7f7;">
+    <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3" id="filter-button2" style="padding: 10px 10px 0px; background-color: #f7f7f7;">
       <h3 class="title-container-text">  Bodystyle <i class="fa fa-chevron-down" style="margin-left: 10px;"></i></h3>
     </div>
 
-    <div class="col-xs-12 col-sm-6 col-sm-offset-3" style="padding: 10px; background-color: #f7f7f7;">
+    <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3" style="padding: 10px; background-color: #f7f7f7;">
 
     <form action="<%= cars_path  %>" class="simple_form /cars" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="✓">
 
@@ -34,7 +34,7 @@
       </div>
 
       <div class="row">
-        <div class="col-xs-12 col-sm-6 col-sm-offset-3" style="padding: 10px;">
+        <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3" style="padding: 10px;">
           <input type="submit" name="commit" value="Find Your Dream Car!" class="btn btn-default btn btn-primary" style="width: 100%" data-disable-with="Apply filter">
         </div>
       </div>
