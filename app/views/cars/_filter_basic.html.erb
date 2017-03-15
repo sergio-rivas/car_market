@@ -13,21 +13,21 @@
   </div>
 
   <div class="filter-container">
-    <div class="filter-label">Max-Price(€):</div>
+    <div class="filter-label">Maximum price (€):</div>
     <div class="col-xs-12">
       <input type="number" class="form-control" name="car[price]" id="_cars_price" value="<%= params[:car].try(:[],:price) %>">
     </div><!---->
   </div>
 
   <div class="filter-container">
-    <div class="filter-label">Odometer (Max KM):</div>
+    <div class="filter-label">Maximum odometer (km):</div>
     <div class="col-xs-12">
       <input type="number" class="form-control" name="car[odometer]" id="_cars_odometer" value="<%= params[:car].try(:[],:odometer) %>">
     </div><!---->
   </div>
 
   <div class="filter-container">
-    <div class="filter-label">Year Limit:</div>
+    <div class="filter-label">Minimum manufacture year:</div>
     <div class="col-xs-12">
       <input type="number" class="form-control" name="car[year]" id="_cars_year" value="<%= params[:car].try(:[],:year) %>">
     </div><!---->
