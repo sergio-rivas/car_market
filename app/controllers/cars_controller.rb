@@ -67,7 +67,6 @@ class CarsController < ApplicationController
     @car.model_id = car_model.id
     @car.user = current_user
     authorize @car
-
     if @car.save
       redirect_to @car, notice: 'Car was successfully created.'
     else
@@ -101,6 +100,8 @@ class CarsController < ApplicationController
 
   # PATCH/PUT /cars/1
   def update
+    car_model = Model.find(params[:car][:models][:model_id].to_i)
+    @car.model_id = car_model.id
     if @car.update(car_params)
       redirect_to @car, notice: 'Car was successfully updated.'
     else
@@ -129,7 +130,7 @@ class CarsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def car_params
-      params.require(:car).permit(:brand_id, :vin, :mpg_city, :mpg_highway, :size, :style, :price_suggested, :color_ext, :color_int, :trans_speeds, :trans_type, :doors, :drive, :models, :price, :odometer, :year, :fuel_type, :description, photos: [] )
+      params.require(:car).permit(:brand_id, :vin, :mpg_city, :mpg_highway, :size, :style, :price_suggested, :color_ext, :color_int, :trans_speeds, :trans_type, :doors, :drive, :models , :price, :odometer, :year, :fuel_type, :description, photos: [] )
     end
 
     def find_cars_of_brands(param)
