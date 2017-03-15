@@ -4,8 +4,9 @@
 <div class="container-fluid hidden-md hidden-lg" >
   <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
-    <ol class="carousel-indicators" >
-      <% if @car.photos.any? %>
+
+    <% if @car.photos.any? %>
+      <ol class="carousel-indicators" >
         <% @car.photos.each_with_index do |photo,i| %>
           <% if i==0 %>
             <li data-target="#carousel-example-generic" data-slide-to="<%= "#{i.to_i}" %>" class="active"></li>
@@ -13,24 +14,22 @@
             <li data-target="#carousel-example-generic" data-slide-to="<%= "#{i.to_i}" %>"></li>
           <% end %>
         <% end %>
-      <% end %>
-    </ol>
+      </ol>
+    <% end %>
 
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox" >
+      <% if @car.photos.any? %>
+        <div class="item active">
+          <%= cl_image_tag @car.photos[0].path, crop: :fill %>
+        </div>
 
-      <div class="item active">
-        <% if @car.photos.any? %>
-        <%= cl_image_tag @car.photos[0].path, crop: :fill %>
-      </div>
-
-      <% @car.photos[1..-1].each do |photo| %>
-      <div class="item" >
-        <%= cl_image_tag photo.path, crop: :fill %>
-      </div>
+        <% @car.photos[1..-1].each do |photo| %>
+          <div class="item" >
+            <%= cl_image_tag photo.path, crop: :fill %>
+          </div>
+        <% end %>
       <% end %>
-      <% end %>
-
     </div>
 
     <!-- Controls -->
@@ -42,17 +41,16 @@
       <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
       <span class="sr-only">Next</span>
     </a>
-  </div>
+
+  </div><!-- end of carousel -->
+
   <div class="price-mobile-vehicleListingSummary-vehiclePriceWrapper hidden-md hidden-lg">
     <div class="price">
       <div><span class="currency">€</span></div>
       <div><span class="amount"><%= @car.price %></span></div>
     </div>
   </div>
-</div>
-
-
-
+</div><!-- end of container for mobile -->
 
 
 <div class="container hidden-md hidden-lg">
@@ -93,17 +91,13 @@
     <div class="cards clearfix" style="background-color: white">
       <h3><%="  Description"%></h3>
       <p><%= @car.description %></p>
-
     </div>
   </div>
 
   <div class="row">
     <div class="cards clearfix">
       <h3><%="Features"%></h3>
-
-
       <ul class="list-icons-showpage">
-
         <li>
           <%= image_tag("car-style.png", class: :"icon-list")%>
           <%= @car.style %>
@@ -112,32 +106,25 @@
           <%= image_tag("size.png", class: :"icon-list")%>
           <%= @car.size  %>
         </li>
-
         <li>
           <%= image_tag("car-door.png", class: :"icon-list")%>
           <%= "#{@car.doors} doors" %>
         </li>
-
         <li>
           <%= image_tag("car-drive.png", class: :"icon-list")%>
           <%= @car.drive %>
         </li>
-
         <li>
           <%= image_tag("car-speeds.png", class: :"icon-list")%>
           <%= "#{@car.trans_speeds} speeds" %>
         </li>
-
         <li>
           <%= image_tag("car-colorext.png", class: :"icon-list")%>
           <%= "#{@car.color_ext}" %>
         </li>
       </ul>
-
     </div>
   </div>
-
-
 
   <div class="row">
     <div class="cards clearfix" style="background-color: white">
@@ -148,7 +135,6 @@
       </div>
     </div>
   </div>
-
 
   <div class="row">
     <div class="cards clearfix">
@@ -168,16 +154,17 @@
     </div>
   </div>
 
-
-</div>
+</div><!-- end of container for mobile -->
 
 <!-- Desktop design -->
 
-<div class="container-fluid hidden-xs hidden-sm" style="background-color: white width: 100vw" >
+<div class="container-fluid hidden-xs hidden-sm" style="background-color: white; width: 100vw" >
+
   <div id="carousel-desktop" class="carousel slide" data-ride="carousel">
+
     <!-- Indicators -->
-    <ol class="carousel-indicators" >
-      <% if @car.photos.any? %>
+    <% if @car.photos.any? %>
+      <ol class="carousel-indicators" >
         <% @car.photos.each_with_index do |photo,i| %>
           <% if i==0 %>
             <li data-target="#carousel-desktop" data-slide-to="<%= "#{i.to_i}" %>" class="active"></li>
@@ -185,24 +172,22 @@
             <li data-target="#carousel-desktop" data-slide-to="<%= "#{i.to_i}" %>"></li>
           <% end %>
         <% end %>
-      <% end %>
-    </ol>
+      </ol>
+    <% end %>
 
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox" >
+      <% if @car.photos.any? %>
+        <div class="item active">
+          <%= cl_image_tag @car.photos[0].path, crop: :fill %>
+        </div>
 
-      <div class="item active">
-        <% if @car.photos.any? %>
-        <%= cl_image_tag @car.photos[0].path, crop: :fill %>
-      </div>
-
-      <% @car.photos[1..-1].each do |photo| %>
-      <div class="item" style="height:80vh">
-        <%= cl_image_tag photo.path, crop: :fill %>
-      </div>
+        <% @car.photos[1..-1].each do |photo| %>
+          <div class="item" style="height:80vh">
+            <%= cl_image_tag photo.path, crop: :fill %>
+          </div>
+        <% end %>
       <% end %>
-      <% end %>
-
     </div>
 
     <!-- Controls -->
@@ -214,22 +199,23 @@
       <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
       <span class="sr-only">Next</span>
     </a>
-  </div>
-  <div class="price-mobile-vehicleListingSummary-vehiclePriceWrapper hidden-md hidden-lg">
+  </div><!-- end of carousel desktop -->
+
+<!--   <div class="price-mobile-vehicleListingSummary-vehiclePriceWrapper hidden-md hidden-lg">
     <div class="price">
       <div><span class="currency">€</span></div>
       <div><span class="amount"><%= @car.price %></span></div>
     </div>
-  </div>
+  </div> -->
 </div>
 
 <div class="container hidden-xs hidden-sm" style="background-color: #FFF">
   <div class="row">
     <div class="col-md-9">
 
-        <div class="row">
-          <div class="cards clearfix" style="background-color: white" >
-            <h3>The car</h3>
+      <div class="row">
+        <div class="cards clearfix" style="background-color: white" >
+          <h3>The car</h3>
           <ul class="list-icons-showpage">
             <li>
               <%= image_tag("car-brand.png", class: :"icon-list")%>
@@ -256,7 +242,6 @@
               <%= @car.trans_type %>
             </li>
           </ul>
-
         </div>
       </div>
 
@@ -271,8 +256,6 @@
       <div class="row">
         <div class="cards clearfix" style="background-color: white">
           <h3><%="Features"%></h3>
-
-
           <ul class="list-icons-showpage">
 
             <li>
@@ -304,45 +287,43 @@
               <%= "#{@car.color_ext}" %>
             </li>
           </ul>
-
         </div>
       </div>
     </div>
-
-
 
 
     <div class="col-md-3 hidden-xs hidden-sm">
-      <div class="row">
-        <div class="sidebar">
-          <div class="price">
-            <span class="currency">€</span>
-            <span class="amount"> <%= @car.price %> </span>
-          </div>
-          <h3>Make an appointment</h3>
-          <%= render 'appointment_form', car: @car, appointment: @appointment %>
-          <p id="notice"><%= notice %></p>
 
+      <div class="sidebar">
+        <div class="price">
+          <span class="currency">€</span>
+          <span class="amount"> <%= @car.price %> </span>
+        </div>
+        <h3>Make an appointment</h3>
+        <%= render 'appointment_form', car: @car, appointment: @appointment %>
+        <p id="notice"><%= notice %></p>
+
+        <div>
+          <h3>Contact seller</h3>
           <div>
-            <h3>Contact seller</h3>
-            <div>
-              <p>Tel: <%= link_to @car.user.phone_number, "tel:#{@car.user.phone_number}" %></p>
-            </div>
-            <div>
-              <p>Email: <%= mail_to @car.user.email %></p>
-            </div>
-            <%= render 'sms-modal' %>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#sms-form">
-              Send SMS
-            </button>
+            <p>Tel: <%= link_to @car.user.phone_number, "tel:#{@car.user.phone_number}" %></p>
           </div>
+          <div>
+            <p>Email: <%= mail_to @car.user.email %></p>
+          </div>
+          <%= render 'sms-modal' %>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#sms-form">
+            Send SMS
+          </button>
         </div>
       </div>
+
     </div>
+
   </div>
 </div>
 
-  <% content_for :after_js do %>
+<% content_for :after_js do %>
   <script type="text/javascript">
     $(document).ready(function(){
       $(document).on('focus', '[data-behaviour~="datepicker"]', function(e){
@@ -357,7 +338,7 @@
       });
     });
   </script>
-  <% end %>
+<% end %>
 
 
 
