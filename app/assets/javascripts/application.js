@@ -34,7 +34,7 @@
       });
 
       $(".profile-cars h3").click(function(){
-        $(".profile-row").slideToggle(speed);
+        $(".profile-cars-row").slideToggle(speed);
       });
 
       $(".profile-box h3").click(function(){
