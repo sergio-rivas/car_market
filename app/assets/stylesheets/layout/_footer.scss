@@ -1,10 +1,11 @@
 // Your footer style
-.footer{
+.footer {
   background-color: #231f20;
   padding: 40px 0 30px;
   color: #fff;
   min-height: 143px;
   z-index: 3;
-  position: relative;
+  position: fixed;
+  bottom: 0px;
   margin-top: 50px;
 }
