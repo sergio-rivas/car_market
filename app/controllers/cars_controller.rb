@@ -9,15 +9,14 @@ class CarsController < ApplicationController
     @cars = []
     @styles=[]
     if params[:car].nil?
-      if params[:styles]
-        @cars = find_cars_of_attribute("style", params[:styles])
+      if params[:styles] || params[:search_value]
         @styles = params[:styles]
-      elsif params[:search_value].nil?
+        @search_value = params[:search_value]
+        @cars = find_cars_of_attribute("style", @styles) & find_cars_of_brands(@search_value)
+      else
         @brands = policy_scope(Brand).all
         @cars = policy_scope(Car).all
-      else
-        @search_value = params[:search_value]
-        find_cars_of_brands(@search_value)
+
       end
     else
       @cars = find_cars_of_brands(params[:car][:brand]) & find_cars_of_attribute("trans_type", params[:car][:trans_type]) & find_cars_below_attribute("price", params[:car][:price]) & find_cars_below_attribute("odometer", params[:car][:odometer]) & find_cars_above_attribute("year", params[:car][:year]) & find_cars_of_attribute("size", params[:car][:size]) & find_cars_of_attribute("style", params[:car][:style]) & find_cars_of_attribute("drive", params[:car][:drive]) & find_cars_of_attribute("doors", params[:car][:doors]) & find_cars_of_attribute("trans_speeds", params[:car][:trans_speeds])
