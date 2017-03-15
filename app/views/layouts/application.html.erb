@@ -10,13 +10,15 @@
     <%= stylesheet_link_tag    'application', media: 'all' %>
   </head>
   <body>
-
-    <%= render 'shared/navbar' %>
-    <%= render 'shared/flashes' %>
-    <div style="height: 60px; width: 100%;"></div>
-    <%= yield %>
-
+    <div class="main-body">
+      <%= render 'shared/navbar' %>
+      <div style="height: 60px; width: 100%;"></div>
+      <%= render 'shared/flashes' %>
+      <%= yield %>
+    </div>
     <%= render 'shared/footer' %>
+
+
     <%= javascript_include_tag 'application' %>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
