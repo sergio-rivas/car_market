@@ -7,12 +7,12 @@ class UserMailer < ApplicationMailer
   #
   def notify_owner(appointment)
     @appointment = appointment
-    mail(to: @appointment.car.user.email, subject: "New appointment for #{@appointment.car.brand.brand_name} #{@appointment.car.model.name}")
+    # mail(to: @appointment.car.user.email, subject: "New appointment for #{@appointment.car.brand.brand_name} #{@appointment.car.model.name}")
     # mail(to: @appointment.user.email, subject: "new appointment")
   end
 
   def notify_buyer(appointment)
     @appointment = appointment
-    mail(to: @appointment.user.email, subject: "New appointment for #{@appointment.car.brand.brand_name} #{@appointment.car.model.name}")
+    # mail(to: @appointment.user.email, subject: "New appointment for #{@appointment.car.brand.brand_name} #{@appointment.car.model.name}")
   end
 end
