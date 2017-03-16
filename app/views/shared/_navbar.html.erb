@@ -35,11 +35,6 @@
             <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
             <% end %>
           </li>
-          <li>
-            <%= link_to destroy_user_session_path, method: :delete do %>
-            <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
-            <% end %>
-          </li>
         </ul>
       </div>
     </div>
@@ -71,9 +66,6 @@
           <% end %></li>
         <li><%= link_to vin_cars_path do %>
           <i class="fa fa-car"></i>  <%= t(".sell_car", default: "Sell a car?") %>
-          <% end %></li>
-        <li><%= link_to destroy_user_session_path, method: :delete do %>
-          <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
           <% end %></li>
       </ul>
     </div>
