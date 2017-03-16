@@ -25,3 +25,32 @@
   }
 }
 
+.home-content-a {
+  padding: 50px 60px 60px 60px;
+}
+
+.home-content-b {
+  padding: 50px 60px 0px 60px;
+}
+
+.contact-content {
+  padding: 50px 60px 0px 60px;
+}
+
+.home-pic-a {
+  img {
+    margin-top: 12vh;
+  }
+}
+
+.home-pic-b {
+  img {
+    margin-top: 12vh;
+    margin-bottom: 10vh;
+  }
+}
+
+.wrapper.with-pic {
+  color: $white;
+}
+
