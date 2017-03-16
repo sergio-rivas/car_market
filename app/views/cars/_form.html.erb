@@ -1,5 +1,5 @@
       <% @collections = policy_scope(SearchDatum).standard_data %>
-      <%= simple_form_for @car do |f| %>
+      <%= simple_form_for @car , html: {class: 'form-validate'} do |f| %>
       <%= f.error_notification %>
       <div class="form-inputs">
         <%= f.simple_fields_for :brands do |p| %>
@@ -10,7 +10,7 @@
           <%= p.input :model_id, collection: @models, selected: @car.try(:model).try(:id), input_html: { class: "js-brand-basic-single input-style"} %>
           <% end %>
         </div>
-        <%= f.input :price, placeholder: "Add price in EUR", input_html: {value: @car.price_suggested || '', class: "input-style"}, required: true %>
+        <%= f.input :price, placeholder: "Add price in EUR", input_html: {value: @car.price_suggested || '', class: "input-style"}, input_html: {class: 'validate[required]'}, required: true %>
         <%= f.input :drive, include_blank: true, collection: @collections[:drive], selected: @car.drive, input_html: { class: "input-style"} %>
         <%= f.input :doors, include_blank: true, collection: @collections[:doors], selected: @car.doors, input_html: { class: "input-style"} %>
         <%= f.input :style, include_blank: true, collection: @collections[:style], selected: @car.style, input_html: { class: "input-style"} %>
