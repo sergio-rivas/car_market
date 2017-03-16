@@ -1,6 +1,6 @@
 
 <!-- mobile content -->
-
+<%= render 'sms-modal' %>
 <div class="container-fluid hidden-md hidden-lg" >
   <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
@@ -146,7 +146,6 @@
         <div>
           <p>Email: <%= mail_to @car.user.email %></p>
         </div>
-        <%= render 'sms-modal' %>
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#sms-form">
           Send SMS
         </button>
@@ -311,7 +310,7 @@
           <div>
             <p>Email: <%= mail_to @car.user.email %></p>
           </div>
-          <%= render 'sms-modal' %>
+
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#sms-form">
             Send SMS
           </button>
