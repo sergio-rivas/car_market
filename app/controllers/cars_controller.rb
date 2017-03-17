@@ -3,7 +3,6 @@ class CarsController < ApplicationController
 
   skip_before_action :authenticate_user!, only: [:index, :show]
 
-
   # GET /cars
   def index
     @cars = []
