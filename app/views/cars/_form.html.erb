@@ -11,8 +11,6 @@
           <% end %>
         </div>
         <%= f.input :price, placeholder: "Add price in EUR", input_html: {value: @car.price_suggested || '', class: "input-style"}, input_html: {class: 'validate[required]'}, required: true %>
-        <%= f.input :odometer, placeholder: "Add current status of km", placeholder: "Add the current km status (numbers only)", input_html: { class: "input-style"} %>
-        <%= f.input :fuel_type, collection: ["Gasoline", "Diesel", "Electric"], input_html: { class: "input-style"} %>
         <%= f.input :drive, include_blank: true, collection: @collections[:drive], selected: @car.drive, input_html: { class: "input-style"} %>
         <%= f.input :doors, include_blank: true, collection: @collections[:doors], selected: @car.doors, input_html: { class: "input-style"} %>
         <%= f.input :style, include_blank: true, collection: @collections[:style], selected: @car.style, input_html: { class: "input-style"} %>
@@ -20,8 +18,12 @@
         <%= f.input :year, placeholder: "Add year of manufacture", input_html: {value: @car.year || '', class: "input-style"} %>
         <%= f.input :mpg_city, placeholder: "Add fuel consumption in city", label: "Fuel consumption (city) in miles per gallon", input_html: {value: @car.mpg_city || '', class: "input-style"} %>
         <%= f.input :mpg_highway, placeholder: "Add fuel consumption in highways", label: "Fuel consumption (highway) in miles per gallon", input_html: {value: @car.mpg_highway || '', class: "input-style"} %>
-        <%= f.input :color_int, placeholder: "Add interior color", label: "Interior Color", input_html: {value: @car.color_int || '', class: "input-style"} %>
         <%= f.input :color_ext, placeholder: "Add exterior color", label: "Exterior Color", input_html: {value: @car.color_ext || '', class: "input-style"} %>
+        <%= f.input :color_int, placeholder: "Add interior color", label: "Interior Color", input_html: {value: @car.color_int || '', class: "input-style"} %>
+        <%= f.input :trans_type, include_blank: true, label: "Transmission type", collection: @collections[:trans_type], selected: @car.trans_type, input_html: { class: "input-style"} %>
+        <%= f.input :trans_speeds, include_blank: true, label: "Transmission speeds", collection: @collections[:trans_speeds], selected: @car.trans_speeds, input_html: { class: "input-style"} %>
+        <%= f.input :odometer, placeholder: "Add current status of km", label: "Odometer (km)", placeholder: "Add the current km status (numbers only)", input_html: { class: "input-style"} %>
+        <%= f.input :fuel_type, collection: ["Gasoline", "Diesel", "Electric"], input_html: { class: "input-style"} %>
         <%= f.input :description, placeholder: "Is there any additional important information about the car?", input_html: { class: "input-style"} %>
         <%= f.input :photos, as: :attachinary %>
       </div>
