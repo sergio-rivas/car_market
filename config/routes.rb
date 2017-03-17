@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   root to: 'pages#home'
   resources :cars do
     collection do
@@ -13,6 +12,9 @@ Rails.application.routes.draw do
   resources :users, only: [:show] do
     resources :appointments, only: [:destroy]
   end
+
+  match "/404", :to => "errors#not_found", :via => :all
+  match "/500", :to => "errors#internal_server_error", :via => :all
 
   devise_for :users,
     controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }, path_prefix: 'd'
